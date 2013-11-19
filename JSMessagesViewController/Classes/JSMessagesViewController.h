@@ -15,7 +15,10 @@
 #import <UIKit/UIKit.h>
 #import "JSBubbleMessageCell.h"
 #import "JSMessageInputView.h"
+#import "JSAvatarImageFactory.h"
+#import "JSBubbleImageViewFactory.h"
 #import "JSMessageSoundEffect.h"
+#import "UIColor+JSMessagesView.h"
 
 /**
  *  The frequency with which timestamps are displayed in the messages table view.
@@ -147,6 +150,14 @@ typedef NS_ENUM(NSUInteger, JSMessagesViewSubtitlePolicy) {
  *  @see JSMessagesViewSubtitlePolicy.
  */
 - (JSMessagesViewSubtitlePolicy)subtitlePolicy;
+
+/**
+ *  Asks the delegate for the input view style.
+ *
+ *  @return A constant describing the input view style.
+ *  @see JSMessageInputViewStyle.
+ */
+- (JSMessageInputViewStyle)inputViewStyle;
 
 @optional
 

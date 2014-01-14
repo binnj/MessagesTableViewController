@@ -28,6 +28,8 @@
     self.dataSource = self;
     [super viewDidLoad];
     
+    [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
+    
     self.title = @"Messages";
     
     self.messageInputView.textView.placeHolder = @"New Message";
@@ -112,11 +114,11 @@
 {
     if(indexPath.row % 2) {
         return [JSBubbleImageViewFactory bubbleImageViewForType:type
-                                                          color:[UIColor js_iOS7lightGrayColor]];
+                                                          color:[UIColor js_bubbleLightGrayColor]];
     }
     
     return [JSBubbleImageViewFactory bubbleImageViewForType:type
-                                                      color:[UIColor js_iOS7blueColor]];
+                                                      color:[UIColor js_bubbleBlueColor]];
 }
 
 - (JSMessagesViewTimestampPolicy)timestampPolicy
@@ -147,7 +149,7 @@
 - (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     if([cell messageType] == JSBubbleMessageTypeOutgoing) {
-        [cell.bubbleView setTextColor:[UIColor whiteColor]];
+        cell.bubbleView.textView.textColor = [UIColor whiteColor];
     
         if([cell.bubbleView.textView respondsToSelector:@selector(linkTextAttributes)]) {
             NSMutableDictionary *attrs = [cell.bubbleView.textView.linkTextAttributes mutableCopy];

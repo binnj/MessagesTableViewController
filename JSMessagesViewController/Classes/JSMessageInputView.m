@@ -109,9 +109,9 @@
         sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
         sendButton.backgroundColor = [UIColor clearColor];
         
-        [sendButton setTitleColor:[UIColor js_iOS7blueColor] forState:UIControlStateNormal];
-        [sendButton setTitleColor:[UIColor js_iOS7blueColor] forState:UIControlStateHighlighted];
-        [sendButton setTitleColor:[UIColor js_iOS7lightGrayColor] forState:UIControlStateDisabled];
+        [sendButton setTitleColor:[UIColor js_bubbleBlueColor] forState:UIControlStateNormal];
+        [sendButton setTitleColor:[UIColor js_bubbleBlueColor] forState:UIControlStateHighlighted];
+        [sendButton setTitleColor:[UIColor js_bubbleLightGrayColor] forState:UIControlStateDisabled];
         
         sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
     }
@@ -187,24 +187,36 @@
 {
     CGRect prevFrame = self.textView.frame;
     
-    int numLines = MAX([self.textView numberOfLinesOfText],
-                       [self.textView.text js_numberOfLines]);
+    NSUInteger numLines = MAX([self.textView numberOfLinesOfText],
+                              [self.textView.text js_numberOfLines]);
+    
+    //  below iOS 7, if you set the text view frame programmatically, the KVO will continue notifying
+    //  to avoid that, we are removing the observer before setting the frame and add the observer after setting frame here.
+    [self.textView removeObserver:_textView.keyboardDelegate
+                       forKeyPath:@"contentSize"];
     
     self.textView.frame = CGRectMake(prevFrame.origin.x,
                                      prevFrame.origin.y,
                                      prevFrame.size.width,
                                      prevFrame.size.height + changeInHeight);
     
+    [self.textView addObserver:_textView.keyboardDelegate
+                    forKeyPath:@"contentSize"
+                       options:NSKeyValueObservingOptionNew
+                       context:nil];
+
     self.textView.contentInset = UIEdgeInsetsMake((numLines >= 6 ? 4.0f : 0.0f),
                                                   0.0f,
                                                   (numLines >= 6 ? 4.0f : 0.0f),
                                                   0.0f);
     
-    self.textView.scrollEnabled = (numLines >= 4);
+    // from iOS 7, the content size will be accurate only if the scrolling is enabled.
+    self.textView.scrollEnabled = YES;
     
     if(numLines >= 6) {
         CGPoint bottomOffset = CGPointMake(0.0f, self.textView.contentSize.height - self.textView.bounds.size.height);
         [self.textView setContentOffset:bottomOffset animated:YES];
+        [self.textView scrollRangeToVisible:NSMakeRange(self.textView.text.length - 2, 1)];
     }
 }
 

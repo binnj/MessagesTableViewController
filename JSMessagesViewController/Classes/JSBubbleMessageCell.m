@@ -171,6 +171,15 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
 
 #pragma mark - Initialization
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 - (instancetype)initWithBubbleType:(JSBubbleMessageType)type
                    bubbleImageView:(UIImageView *)bubbleImageView
                       hasTimestamp:(BOOL)hasTimestamp
@@ -178,10 +187,8 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
                        hasSubtitle:(BOOL)hasSubtitle
                    reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if(self) {
-        [self setup];
-        
         [self configureWithType:type
                 bubbleImageView:bubbleImageView
                       timestamp:hasTimestamp
@@ -202,6 +209,15 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
 
 #pragma mark - TableViewCell
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.bubbleView.textView.text = nil;
+    self.timestampLabel.text = nil;
+    self.avatarImageView = nil;
+    self.subtitleLabel.text = nil;
+}
+
 - (void)setBackgroundColor:(UIColor *)color
 {
     [super setBackgroundColor:color];
@@ -213,7 +229,7 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
 
 - (void)setMessage:(NSString *)msg
 {
-    self.bubbleView.text = msg;
+    self.bubbleView.textView.text = msg;
 }
 
 - (void)setTimestamp:(NSDate *)date
@@ -243,15 +259,22 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
     return self.bubbleView.type;
 }
 
-- (CGFloat)height
+#pragma mark - Class methods
+
++ (CGFloat)neededHeightForBubbleMessageCellWithText:(NSString *)text
+                                          timestamp:(BOOL)hasTimestamp
+                                             avatar:(BOOL)hasAvatar
+                                           subtitle:(BOOL)hasSubtitle
 {
-    CGFloat timestampHeight = (self.timestampLabel) ? kJSTimeStampLabelHeight : 0.0f;
-    CGFloat avatarHeight = (self.avatarImageView) ? kJSAvatarImageSize : 0.0f;
-	CGFloat subtitleHeight = self.subtitleLabel ? kJSSubtitleLabelHeight : 0.0f;
+    CGFloat timestampHeight = hasTimestamp ? kJSTimeStampLabelHeight : 0.0f;
+    CGFloat avatarHeight = hasAvatar ? kJSAvatarImageSize : 0.0f;
+	CGFloat subtitleHeight = hasSubtitle ? kJSSubtitleLabelHeight : 0.0f;
     
     CGFloat subviewHeights = timestampHeight + subtitleHeight + kJSLabelPadding;
     
-    return subviewHeights + MAX(avatarHeight, [self.bubbleView neededHeightForCell]);
+    CGFloat bubbleHeight = [JSBubbleView neededHeightForText:text];
+    
+    return subviewHeights + MAX(avatarHeight, bubbleHeight);
 }
 
 #pragma mark - Layout
@@ -287,7 +310,7 @@ static const CGFloat kJSSubtitleLabelHeight = 15.0f;
 
 - (void)copy:(id)sender
 {
-    [[UIPasteboard generalPasteboard] setString:[self.bubbleView text]];
+    [[UIPasteboard generalPasteboard] setString:self.bubbleView.textView.text];
     [self resignFirstResponder];
 }
 

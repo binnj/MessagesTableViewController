@@ -105,6 +105,10 @@
     if ([messageData isMediaMessage]) {
         finalSize = [[messageData media] mediaViewDisplaySize];
     }
+    // Handling status messages, which should not have a buble
+    else if ([messageData.text isEqualToString:@""]) {
+        finalSize = CGSizeMake(1.0f, 0.0f);
+    }
     else {
         CGSize avatarSize = [self jsq_avatarSizeForMessageData:messageData withLayout:layout];
 

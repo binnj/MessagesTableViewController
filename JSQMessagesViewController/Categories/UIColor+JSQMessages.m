@@ -54,6 +54,16 @@
                            alpha:1.0f];
 }
 
++ (UIColor *)jsq_messageBackground
+{
+    return [UIColor colorWithRed:0.24 green:0.24 blue:0.24 alpha:1.0];
+}
+
++ (UIColor *)jsq_toolbarBackground
+{
+    return [UIColor colorWithRed:0.09 green:0.09 blue:0.09 alpha:1.0];
+}
+
 #pragma mark - Utilities
 
 - (UIColor *)jsq_colorByDarkeningColorWithValue:(CGFloat)value

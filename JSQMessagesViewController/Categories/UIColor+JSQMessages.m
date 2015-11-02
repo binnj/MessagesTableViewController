@@ -56,7 +56,7 @@
 
 + (UIColor *)jsq_messageBackground
 {
-    return [UIColor colorWithRed:0.24 green:0.24 blue:0.24 alpha:1.0];
+    return [UIColor whiteColor];
 }
 
 + (UIColor *)jsq_toolbarBackground

@@ -19,6 +19,7 @@
 #import <Foundation/Foundation.h>
 
 #import "JSQMessageData.h"
+#import "Binnj_PollMessageObject.h"
 
 /**
  *  The `JSQMessage` class is a concrete class for message model objects that represents a single user message.
@@ -62,6 +63,11 @@
  *  That is, if `isMediaMessage` is equal to `NO` then this value will be `nil`.
  */
 @property (copy, nonatomic, readonly) id<JSQMessageMediaData> media;
+
+/**
+ *  Returns the poll object for poll messages
+ */
+@property (strong, nonatomic) Binnj_PollMessageObject* poll;
 
 
 #pragma mark - Initialization

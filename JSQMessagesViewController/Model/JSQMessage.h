@@ -19,7 +19,7 @@
 #import <Foundation/Foundation.h>
 
 #import "JSQMessageData.h"
-#import "Binnj_PollMessageObject.h"
+#import "Binnj_MessageObject.h"
 
 /**
  *  The `JSQMessage` class is a concrete class for message model objects that represents a single user message.
@@ -67,7 +67,7 @@
 /**
  *  Returns the poll object for poll messages
  */
-@property (strong, nonatomic) Binnj_PollMessageObject* poll;
+@property (strong, nonatomic) Binnj_MessageObject* messageObject;
 
 
 #pragma mark - Initialization

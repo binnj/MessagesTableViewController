@@ -184,8 +184,8 @@
             for (NSDictionary* item in pasteboard.items) {
                 if (item[@"Apple Web Archive pasteboard type"]) {
                     data = item[@"Apple Web Archive pasteboard type"];
-                    NSDictionary *options = nil;
-                    [self setAttributedText: [[NSMutableAttributedString alloc]initWithData:data options:options documentAttributes:nil error:nil]];
+                    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSCharacterEncodingDocumentAttribute};
+                    [self setAttributedText: [[NSMutableAttributedString alloc]initWithData:data options:nil documentAttributes:nil error:nil]];
                     break;
                 }
             }

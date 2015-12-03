@@ -33,6 +33,7 @@
  *  Return `YES` to defer functionality to the `textView`.
  */
 - (BOOL)composerTextView:(JSQMessagesComposerTextView *)textView shouldPasteWithSender:(id)sender;
+- (void)composerTextView:(JSQMessagesComposerTextView *)textView didPasteWithSender:(id)sender;
 
 @end
 

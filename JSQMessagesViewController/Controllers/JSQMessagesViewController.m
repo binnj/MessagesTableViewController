@@ -336,6 +336,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     UITextView *textView = self.inputToolbar.contentView.textView;
     textView.text = nil;
+    //workaroung for textview change back to default
+    NSFont *systemFont = [UIFont systemFontOfSize:16.0f];
+    NSDictionary * fontAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:systemFont, NSFontAttributeName, nil];
+    textView.attributedText = [[NSMutableAttributedString alloc] initWithString:@"." attributes:fontAttributes];
+    textView.attributedText = nil;
     [textView.undoManager removeAllActions];
 
     [self.inputToolbar toggleSendButtonEnabled];
@@ -727,6 +732,13 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         return;
     }
 
+    if (!textView.text.length) {
+        //workaroung for textview change back to default
+        NSFont *systemFont = [UIFont systemFontOfSize:16.0f];
+        NSDictionary * fontAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:systemFont, NSFontAttributeName, nil];
+        textView.attributedText = [[NSMutableAttributedString alloc] initWithString:@"." attributes:fontAttributes];
+        textView.attributedText = nil;
+    }
     [self.inputToolbar toggleSendButtonEnabled];
 }
 

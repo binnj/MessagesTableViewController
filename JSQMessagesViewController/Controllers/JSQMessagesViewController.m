@@ -336,7 +336,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     UITextView *textView = self.inputToolbar.contentView.textView;
     textView.text = nil;
-    //workaroung for textview change back to default
+    //workaround for textview change back to default
     NSFont *systemFont = [UIFont systemFontOfSize:16.0f];
     NSDictionary * fontAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:systemFont, NSFontAttributeName, nil];
     textView.attributedText = [[NSMutableAttributedString alloc] initWithString:@"." attributes:fontAttributes];

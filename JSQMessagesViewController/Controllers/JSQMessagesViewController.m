@@ -374,7 +374,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)scrollToBottomAnimated:(BOOL)animated
 {
-    [self.collectionView reloadData];
     if ([self.collectionView numberOfSections] == 0) {
         return;
     }

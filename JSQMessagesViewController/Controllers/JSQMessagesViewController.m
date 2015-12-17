@@ -537,6 +537,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     cell.cellTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellBottomLabelAtIndexPath:indexPath];
+    [cell.cellBottomLabel sizeToFit];
 
     CGFloat bubbleTopLabelInset = (avatarImageDataSource != nil) ? 60.0f : 15.0f;
 
@@ -666,6 +667,10 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
            atIndexPath:(NSIndexPath *)indexPath { }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath { }
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath { }
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelAtIndexPath:(NSIndexPath *)indexPath { }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
  didTapCellAtIndexPath:(NSIndexPath *)indexPath

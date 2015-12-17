@@ -370,6 +370,12 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
     else if (CGRectContainsPoint(self.messageBubbleContainerView.frame, touchPt)) {
         [self.delegate messagesCollectionViewCellDidTapMessageBubble:self];
     }
+    else if (CGRectContainsPoint(self.messageBubbleTopLabel.frame, touchPt)) {
+        [self.delegate messagesCollectionViewCellDidTapMessageBubbleTopLabel:self];
+    }
+    else if (CGRectContainsPoint(self.cellBottomLabel.frame, touchPt)) {
+        [self.delegate messagesCollectionViewCellDidTapMessageBubbleBottomLabel:self];
+    }
     else {
         [self.delegate messagesCollectionViewCellDidTapCell:self atPosition:touchPt];
     }

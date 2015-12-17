@@ -43,10 +43,10 @@
 
 /**
  *  Creates and returns a new button that is styled as the default send button.
- *  The button has title text `@"Reply"` and no image.
+ *  The button has title text and no image.
  *
  *  @return A newly created button.
  */
-+ (UIButton *)defaultReplyButtonItem;
++ (UIButton *)defaultButtonItemWithTitle:(NSString*)title;
 
 @end

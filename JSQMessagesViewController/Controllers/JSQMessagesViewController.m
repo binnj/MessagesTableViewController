@@ -596,10 +596,10 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 - (BOOL)collectionView:(JSQMessagesCollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //  disable menu for media messages
-    id<JSQMessageData> messageItem = [collectionView.dataSource collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
-    if ([messageItem isMediaMessage]) {
-        return NO;
-    }
+//    id<JSQMessageData> messageItem = [collectionView.dataSource collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
+//    if ([messageItem isMediaMessage]) {
+//        return NO;
+//    }
 
     self.selectedIndexPathForMenu = indexPath;
 
@@ -615,6 +615,10 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
+    JSQMessagesCollectionViewCell *selectedCell = (JSQMessagesCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (selectedCell.mediaView) {
+        return NO;
+    }
     if (action == @selector(copy:) || action == @selector(delete:)) {
         return YES;
     }
@@ -626,7 +630,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 {
     if (action == @selector(copy:)) {
         id<JSQMessageData> messageData = [collectionView.dataSource collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
-        [[UIPasteboard generalPasteboard] setString:[messageData text]];
+        if (![messageData isMediaMessage]) {
+            [[UIPasteboard generalPasteboard] setString:[messageData text]];
+        }
     }
     else if (action == @selector(delete:)) {
         [collectionView.dataSource collectionView:collectionView didDeleteMessageAtIndexPath:indexPath];

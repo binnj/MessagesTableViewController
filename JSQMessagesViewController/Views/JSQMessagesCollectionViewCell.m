@@ -375,6 +375,15 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
     }
     else if (CGRectContainsPoint(self.cellBottomLabel.frame, touchPt)) {
         [self.delegate messagesCollectionViewCellDidTapMessageBubbleBottomLabel:self];
+        
+        //check if like button is tapped (like width=15 and height =15)
+        CGRect left = CGRectMake(self.cellBottomLabel.frame.origin.x, self.cellBottomLabel.frame.origin.y, 15, 15);
+        CGRect right = CGRectMake(self.cellBottomLabel.frame.origin.x+self.cellBottomLabel.frame.size.width-15, self.cellBottomLabel.frame.origin.y, 15, 15);
+        
+        if (CGRectContainsPoint(left, touchPt))
+            [self.delegate messagesCollectionViewCellDidTapMessageBubbleBottomLabelLeftSide:self];
+        if (CGRectContainsPoint(right, touchPt))
+            [self.delegate messagesCollectionViewCellDidTapMessageBubbleBottomLabelRightSide:self];
     }
     else {
         [self.delegate messagesCollectionViewCellDidTapCell:self atPosition:touchPt];

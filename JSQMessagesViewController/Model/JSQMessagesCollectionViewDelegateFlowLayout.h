@@ -106,6 +106,20 @@
  *  @param indexPath      The index path of the item for which the message bubble was tapped.
  */
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelAtIndexPath:(NSIndexPath *)indexPath;
+/**
+ *  Notifies the delegate that the message bubble bottom label left Side at the specified indexPath did receive a tap event.
+ *
+ *  @param collectionView The collection view object that is notifying the delegate of the tap event.
+ *  @param indexPath      The index path of the item for which the message bubble was tapped.
+ */
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelLeftSideAtIndexPath:(NSIndexPath *)indexPath;
+/**
+ *  Notifies the delegate that the message bubble bottom label right Side at the specified indexPath did receive a tap event.
+ *
+ *  @param collectionView The collection view object that is notifying the delegate of the tap event.
+ *  @param indexPath      The index path of the item for which the message bubble was tapped.
+ */
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelRightSideAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  Notifies the delegate that the cell at the specified indexPath did receive a tap event at the specified touchLocation.

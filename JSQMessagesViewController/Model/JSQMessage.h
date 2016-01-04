@@ -137,4 +137,6 @@
                             date:(NSDate *)date
                            media:(id<JSQMessageMediaData>)media;
 
+- (NSComparisonResult)compare:(id <JSQMessageData>)another;
+
 @end

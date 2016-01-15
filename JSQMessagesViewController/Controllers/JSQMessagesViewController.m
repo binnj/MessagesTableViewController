@@ -237,13 +237,12 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     [super viewWillAppear:animated];
     [self.view layoutIfNeeded];
     [self.collectionView.collectionViewLayout invalidateLayout];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
-    });
 
     if (self.automaticallyScrollsToMostRecentMessage) {
-//        [self scrollToBottomAnimated:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+//            [self scrollToBottomAnimated:NO];
+        });
     }
 
     [self jsq_updateKeyboardTriggerPoint];

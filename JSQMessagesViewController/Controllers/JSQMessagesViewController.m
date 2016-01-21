@@ -327,6 +327,26 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
 }
 
+- (void)didPressPhotoButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressVideoButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressLocationButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressPollButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
 - (void)finishSendingMessage
 {
     [self finishSendingMessageAnimated:YES];
@@ -694,6 +714,26 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
                senderDisplayName:self.senderDisplayName
                             date:[NSDate date]];
     }
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPhotoBarButton:(UIButton *)sender
+{
+    [self didPressPhotoButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressVideoBarButton:(UIButton *)sender
+{
+    [self didPressVideoButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressLocationBarButton:(UIButton *)sender
+{
+    [self didPressLocationButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPollBarButton:(UIButton *)sender
+{
+    [self didPressPollButton:sender];
 }
 
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender

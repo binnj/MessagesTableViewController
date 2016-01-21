@@ -34,6 +34,10 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
 @property (assign, nonatomic) BOOL jsq_isObserving;
 
 - (void)jsq_leftBarButtonPressed:(UIButton *)sender;
+- (void)jsq_photoBarButtonPressed:(UIButton *)sender;
+- (void)jsq_videoBarButtonPressed:(UIButton *)sender;
+- (void)jsq_locationBarButtonPressed:(UIButton *)sender;
+- (void)jsq_pollBarButtonPressed:(UIButton *)sender;
 - (void)jsq_rightBarButtonPressed:(UIButton *)sender;
 
 - (void)jsq_addObservers;
@@ -57,7 +61,7 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     self.jsq_isObserving = NO;
     self.sendButtonOnRight = YES;
 
-    self.preferredDefaultHeight = 44.0f;
+    self.preferredDefaultHeight = 86.0f;
     self.maximumHeight = NSNotFound;
 
     JSQMessagesToolbarContentView *toolbarContentView = [self loadToolbarContentView];
@@ -68,8 +72,12 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     _contentView = toolbarContentView;
 
     [self jsq_addObservers];
-
+    
     self.contentView.leftBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
+    self.contentView.photoBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
+    self.contentView.videoBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
+    self.contentView.locationBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
+    self.contentView.pollBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
     self.contentView.rightBarButtonItem = [JSQMessagesToolbarButtonFactory defaultSendButtonItem];
 
     [self toggleSendButtonEnabled];
@@ -102,6 +110,26 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
 - (void)jsq_leftBarButtonPressed:(UIButton *)sender
 {
     [self.delegate messagesInputToolbar:self didPressLeftBarButton:sender];
+}
+
+- (void)jsq_photoBarButtonPressed:(UIButton *)sender
+{
+    [self.delegate messagesInputToolbar:self didPressPhotoBarButton:sender];
+}
+
+- (void)jsq_videoBarButtonPressed:(UIButton *)sender
+{
+    [self.delegate messagesInputToolbar:self didPressVideoBarButton:sender];
+}
+
+- (void)jsq_locationBarButtonPressed:(UIButton *)sender
+{
+    [self.delegate messagesInputToolbar:self didPressLocationBarButton:sender];
+}
+
+- (void)jsq_pollBarButtonPressed:(UIButton *)sender
+{
+    [self.delegate messagesInputToolbar:self didPressPollBarButton:sender];
 }
 
 - (void)jsq_rightBarButtonPressed:(UIButton *)sender
@@ -141,13 +169,53 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
                                              forControlEvents:UIControlEventTouchUpInside];
             }
             else if ([keyPath isEqualToString:NSStringFromSelector(@selector(rightBarButtonItem))]) {
-
+                
                 [self.contentView.rightBarButtonItem removeTarget:self
                                                            action:NULL
                                                  forControlEvents:UIControlEventTouchUpInside];
-
+                
                 [self.contentView.rightBarButtonItem addTarget:self
                                                         action:@selector(jsq_rightBarButtonPressed:)
+                                              forControlEvents:UIControlEventTouchUpInside];
+            }
+            else if ([keyPath isEqualToString:NSStringFromSelector(@selector(photoBarButtonItem))]) {
+                
+                [self.contentView.photoBarButtonItem removeTarget:self
+                                                           action:NULL
+                                                 forControlEvents:UIControlEventTouchUpInside];
+                
+                [self.contentView.photoBarButtonItem addTarget:self
+                                                        action:@selector(jsq_photoBarButtonPressed:)
+                                              forControlEvents:UIControlEventTouchUpInside];
+            }
+            else if ([keyPath isEqualToString:NSStringFromSelector(@selector(videoBarButtonItem))]) {
+                
+                [self.contentView.videoBarButtonItem removeTarget:self
+                                                           action:NULL
+                                                 forControlEvents:UIControlEventTouchUpInside];
+                
+                [self.contentView.videoBarButtonItem addTarget:self
+                                                        action:@selector(jsq_videoBarButtonPressed:)
+                                              forControlEvents:UIControlEventTouchUpInside];
+            }
+            else if ([keyPath isEqualToString:NSStringFromSelector(@selector(locationBarButtonItem))]) {
+                
+                [self.contentView.locationBarButtonItem removeTarget:self
+                                                           action:NULL
+                                                 forControlEvents:UIControlEventTouchUpInside];
+                
+                [self.contentView.locationBarButtonItem addTarget:self
+                                                        action:@selector(jsq_locationBarButtonPressed:)
+                                              forControlEvents:UIControlEventTouchUpInside];
+            }
+            else if ([keyPath isEqualToString:NSStringFromSelector(@selector(pollBarButtonItem))]) {
+                
+                [self.contentView.pollBarButtonItem removeTarget:self
+                                                           action:NULL
+                                                 forControlEvents:UIControlEventTouchUpInside];
+                
+                [self.contentView.pollBarButtonItem addTarget:self
+                                                        action:@selector(jsq_pollBarButtonPressed:)
                                               forControlEvents:UIControlEventTouchUpInside];
             }
 
@@ -171,6 +239,26 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
                        forKeyPath:NSStringFromSelector(@selector(rightBarButtonItem))
                           options:0
                           context:kJSQMessagesInputToolbarKeyValueObservingContext];
+    
+    [self.contentView addObserver:self
+                       forKeyPath:NSStringFromSelector(@selector(photoBarButtonItem))
+                          options:0
+                          context:kJSQMessagesInputToolbarKeyValueObservingContext];
+    
+    [self.contentView addObserver:self
+                       forKeyPath:NSStringFromSelector(@selector(videoBarButtonItem))
+                          options:0
+                          context:kJSQMessagesInputToolbarKeyValueObservingContext];
+    
+    [self.contentView addObserver:self
+                       forKeyPath:NSStringFromSelector(@selector(locationBarButtonItem))
+                          options:0
+                          context:kJSQMessagesInputToolbarKeyValueObservingContext];
+    
+    [self.contentView addObserver:self
+                       forKeyPath:NSStringFromSelector(@selector(pollBarButtonItem))
+                          options:0
+                          context:kJSQMessagesInputToolbarKeyValueObservingContext];
 
     self.jsq_isObserving = YES;
 }
@@ -188,6 +276,18 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
 
         [_contentView removeObserver:self
                           forKeyPath:NSStringFromSelector(@selector(rightBarButtonItem))
+                             context:kJSQMessagesInputToolbarKeyValueObservingContext];
+        [_contentView removeObserver:self
+                          forKeyPath:NSStringFromSelector(@selector(photoBarButtonItem))
+                             context:kJSQMessagesInputToolbarKeyValueObservingContext];
+        [_contentView removeObserver:self
+                          forKeyPath:NSStringFromSelector(@selector(videoBarButtonItem))
+                             context:kJSQMessagesInputToolbarKeyValueObservingContext];
+        [_contentView removeObserver:self
+                          forKeyPath:NSStringFromSelector(@selector(locationBarButtonItem))
+                             context:kJSQMessagesInputToolbarKeyValueObservingContext];
+        [_contentView removeObserver:self
+                          forKeyPath:NSStringFromSelector(@selector(pollBarButtonItem))
                              context:kJSQMessagesInputToolbarKeyValueObservingContext];
     }
     @catch (NSException *__unused exception) { }

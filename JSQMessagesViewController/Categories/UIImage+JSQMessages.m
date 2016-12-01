@@ -90,6 +90,26 @@
     return [UIImage jsq_bubbleImageFromBundleWithName:@"clip"];
 }
 
++ (UIImage *)jsq_defaultPhotoImage
+{
+    return [UIImage jsq_bubbleImageFromBundleWithName:@"photo"];
+}
+
++ (UIImage *)jsq_defaultVideoImage
+{
+    return [UIImage jsq_bubbleImageFromBundleWithName:@"video"];
+}
+
++ (UIImage *)jsq_defaultLocationImage
+{
+    return [UIImage jsq_bubbleImageFromBundleWithName:@"location"];
+}
+
++ (UIImage *)jsq_defaultPollImage
+{
+    return [UIImage jsq_bubbleImageFromBundleWithName:@"poll"];
+}
+
 + (UIImage *)jsq_defaultTypingIndicatorImage
 {
     return [UIImage jsq_bubbleImageFromBundleWithName:@"typing"];

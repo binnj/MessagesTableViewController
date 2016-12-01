@@ -30,16 +30,80 @@
     UIImage *accessoryImage = [UIImage jsq_defaultAccessoryImage];
     UIImage *normalImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
-
+    
     UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, accessoryImage.size.width, 32.0f)];
     [accessoryButton setImage:normalImage forState:UIControlStateNormal];
     [accessoryButton setImage:highlightedImage forState:UIControlStateHighlighted];
-
+    
     accessoryButton.contentMode = UIViewContentModeScaleAspectFit;
     accessoryButton.backgroundColor = [UIColor clearColor];
     accessoryButton.tintColor = [UIColor lightGrayColor];
-
+    
     return accessoryButton;
+}
++ (UIButton *)defaultPhotoButtonItem
+{
+    UIImage *photoImage = [UIImage jsq_defaultPhotoImage];
+    UIImage *normalPhotoImage = [photoImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+    UIImage *highlightedPhotoImage = [photoImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+    
+    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, photoImage.size.width, 32.0f)];
+    [photoButton setImage:normalPhotoImage forState:UIControlStateNormal];
+    [photoButton setImage:highlightedPhotoImage forState:UIControlStateHighlighted];
+    
+    photoButton.contentMode = UIViewContentModeScaleAspectFit;
+    photoButton.backgroundColor = [UIColor clearColor];
+    photoButton.tintColor = [UIColor lightGrayColor];
+    
+    return photoButton;
+}
++ (UIButton *)defaultVideoButtonItem
+{
+    UIImage *videoImage = [UIImage jsq_defaultVideoImage];
+    UIImage *normalVideoImage = [videoImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+    UIImage *highlightedVideoImage = [videoImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+    
+    UIButton *videoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, videoImage.size.width, 32.0f)];
+    [videoButton setImage:normalVideoImage forState:UIControlStateNormal];
+    [videoButton setImage:highlightedVideoImage forState:UIControlStateHighlighted];
+    
+    videoButton.contentMode = UIViewContentModeScaleAspectFit;
+    videoButton.backgroundColor = [UIColor clearColor];
+    videoButton.tintColor = [UIColor lightGrayColor];
+    
+    return videoButton;
+}
++ (UIButton *)defaultLocationButtonItem
+{
+    UIImage *locationImage = [UIImage jsq_defaultLocationImage];
+    UIImage *normalLocationImage = [locationImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+    UIImage *highlightedLocationImage = [locationImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+    
+    UIButton *locationButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, locationImage.size.width, 32.0f)];
+    [locationButton setImage:normalLocationImage forState:UIControlStateNormal];
+    [locationButton setImage:highlightedLocationImage forState:UIControlStateHighlighted];
+    
+    locationButton.contentMode = UIViewContentModeScaleAspectFit;
+    locationButton.backgroundColor = [UIColor clearColor];
+    locationButton.tintColor = [UIColor lightGrayColor];
+    
+    return locationButton;
+}
++ (UIButton *)defaultPollButtonItem
+{
+    UIImage *pollImage = [UIImage jsq_defaultPollImage];
+    UIImage *normalPollImage = [pollImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+    UIImage *highlightedPollImage = [pollImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+    
+    UIButton *pollButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, pollImage.size.width, 32.0f)];
+    [pollButton setImage:normalPollImage forState:UIControlStateNormal];
+    [pollButton setImage:highlightedPollImage forState:UIControlStateHighlighted];
+    
+    pollButton.contentMode = UIViewContentModeScaleAspectFit;
+    pollButton.backgroundColor = [UIColor clearColor];
+    pollButton.tintColor = [UIColor lightGrayColor];
+    
+    return pollButton;
 }
 
 + (UIButton *)defaultSendButtonItem

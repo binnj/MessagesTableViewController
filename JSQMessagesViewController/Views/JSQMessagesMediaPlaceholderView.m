@@ -50,6 +50,54 @@
     return view;
 }
 
++ (instancetype)viewWithPhotoIcon
+{
+    UIColor *lightGrayColor = [UIColor jsq_messageBubbleLightGrayColor];
+    UIImage *photoIcon = [[UIImage jsq_defaultPhotoImage] jsq_imageMaskedWithColor:[lightGrayColor jsq_colorByDarkeningColorWithValue:0.4f]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:photoIcon];
+    
+    JSQMessagesMediaPlaceholderView *view =[[JSQMessagesMediaPlaceholderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 120.0f)
+                                                                                  backgroundColor:lightGrayColor
+                                                                                        imageView:imageView];
+    return view;
+}
+
++ (instancetype)viewWithVideoIcon
+{
+    UIColor *lightGrayColor = [UIColor jsq_messageBubbleLightGrayColor];
+    UIImage *videoIcon = [[UIImage jsq_defaultAccessoryImage] jsq_imageMaskedWithColor:[lightGrayColor jsq_colorByDarkeningColorWithValue:0.4f]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:videoIcon];
+    
+    JSQMessagesMediaPlaceholderView *view =[[JSQMessagesMediaPlaceholderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 120.0f)
+                                                                                  backgroundColor:lightGrayColor
+                                                                                        imageView:imageView];
+    return view;
+}
+
++ (instancetype)viewWithLocationIcon
+{
+    UIColor *lightGrayColor = [UIColor jsq_messageBubbleLightGrayColor];
+    UIImage *locationIcon = [[UIImage jsq_defaultAccessoryImage] jsq_imageMaskedWithColor:[lightGrayColor jsq_colorByDarkeningColorWithValue:0.4f]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:locationIcon];
+    
+    JSQMessagesMediaPlaceholderView *view =[[JSQMessagesMediaPlaceholderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 120.0f)
+                                                                                  backgroundColor:lightGrayColor
+                                                                                        imageView:imageView];
+    return view;
+}
+
++ (instancetype)viewWithPollIcon
+{
+    UIColor *lightGrayColor = [UIColor jsq_messageBubbleLightGrayColor];
+    UIImage *pollIcon = [[UIImage jsq_defaultAccessoryImage] jsq_imageMaskedWithColor:[lightGrayColor jsq_colorByDarkeningColorWithValue:0.4f]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:pollIcon];
+    
+    JSQMessagesMediaPlaceholderView *view =[[JSQMessagesMediaPlaceholderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 120.0f)
+                                                                                  backgroundColor:lightGrayColor
+                                                                                        imageView:imageView];
+    return view;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
               backgroundColor:(UIColor *)backgroundColor
         activityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView

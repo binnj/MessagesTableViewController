@@ -34,6 +34,38 @@
 + (UIButton *)defaultAccessoryButtonItem;
 
 /**
+ *  Creates and returns a new button that is styled as the default photo button.
+ *  The button has a photo icon image and no text.
+ *
+ *  @return A newly created button.
+ */
++ (UIButton *)defaultPhotoButtonItem;
+
+/**
+ *  Creates and returns a new button that is styled as the default video button.
+ *  The button has a video icon image and no text.
+ *
+ *  @return A newly created button.
+ */
++ (UIButton *)defaultVideoButtonItem;
+
+/**
+ *  Creates and returns a new button that is styled as the default location button.
+ *  The button has a location icon image and no text.
+ *
+ *  @return A newly created button.
+ */
++ (UIButton *)defaultLocationButtonItem;
+
+/**
+ *  Creates and returns a new button that is styled as the default poll button.
+ *  The button has a poll icon image and no text.
+ *
+ *  @return A newly created button.
+ */
++ (UIButton *)defaultPollButtonItem;
+
+/**
  *  Creates and returns a new button that is styled as the default send button.
  *  The button has title text `@"Send"` and no image.
  *

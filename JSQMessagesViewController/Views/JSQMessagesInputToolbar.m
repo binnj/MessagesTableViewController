@@ -74,10 +74,10 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     [self jsq_addObservers];
     
     self.contentView.leftBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
-    self.contentView.photoBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
-    self.contentView.videoBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
-    self.contentView.locationBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
-    self.contentView.pollBarButtonItem = [JSQMessagesToolbarButtonFactory defaultAccessoryButtonItem];
+    self.contentView.photoBarButtonItem = [JSQMessagesToolbarButtonFactory defaultPhotoButtonItem];
+    self.contentView.videoBarButtonItem = [JSQMessagesToolbarButtonFactory defaultVideoButtonItem];
+    self.contentView.locationBarButtonItem = [JSQMessagesToolbarButtonFactory defaultLocationButtonItem];
+    self.contentView.pollBarButtonItem = [JSQMessagesToolbarButtonFactory defaultPollButtonItem];
     self.contentView.rightBarButtonItem = [JSQMessagesToolbarButtonFactory defaultSendButtonItem];
 
     [self toggleSendButtonEnabled];

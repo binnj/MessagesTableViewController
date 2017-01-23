@@ -61,7 +61,7 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     self.jsq_isObserving = NO;
     self.sendButtonOnRight = YES;
 
-    self.preferredDefaultHeight = 86.0f;
+    self.preferredDefaultHeight = 44.0f;
     self.maximumHeight = NSNotFound;
 
     JSQMessagesToolbarContentView *toolbarContentView = [self loadToolbarContentView];

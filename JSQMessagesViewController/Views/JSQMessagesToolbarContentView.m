@@ -32,15 +32,19 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 
 @property (weak, nonatomic) IBOutlet UIView *photoBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoBarButtonContainerViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoBarButtonContainerViewLeftPaddingConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *videoBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoBarButtonContainerViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoBarButtonContainerViewLeftPaddingConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *locationBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *locationBarButtonContainerViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *locationBarButtonContainerViewLeftPaddingConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *pollBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pollBarButtonContainerViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pollBarButtonContainerViewLeftPaddingConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *rightBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightBarButtonContainerViewWidthConstraint;
@@ -336,6 +340,30 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     [self setNeedsUpdateConstraints];
 }
 
+- (void)setPhotoContentPadding:(CGFloat)photoBarButtonContentPadding
+{
+    self.photoBarButtonContainerViewLeftPaddingConstraint.constant = photoBarButtonContentPadding;
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)setVideoContentPadding:(CGFloat)videoBarButtonContentPadding
+{
+    self.videoBarButtonContainerViewLeftPaddingConstraint.constant = videoBarButtonContentPadding;
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)setLocationBarButtonContentPadding:(CGFloat)locationBarButtonContentPadding
+{
+    self.locationBarButtonContainerViewLeftPaddingConstraint.constant = locationBarButtonContentPadding;
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)setPollBarButtonContentPadding:(CGFloat)pollBarButtonContentPadding
+{
+    self.pollBarButtonContainerViewLeftPaddingConstraint.constant = pollBarButtonContentPadding;
+    [self setNeedsUpdateConstraints];
+}
+
 #pragma mark - Getters
 
 - (CGFloat)leftBarButtonItemWidth
@@ -376,6 +404,26 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 - (CGFloat)leftContentPadding
 {
     return self.leftHorizontalSpacingConstraint.constant;
+}
+
+- (CGFloat)photoBarButtonContentPadding
+{
+    return self.photoBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)videoBarButtonContentPadding
+{
+    return self.videoBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)locationBarButtonContentPadding
+{
+    return self.locationBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)pollBarButtonContentPadding
+{
+    return self.pollBarButtonContainerViewWidthConstraint.constant;
 }
 
 #pragma mark - UIView overrides

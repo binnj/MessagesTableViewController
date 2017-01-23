@@ -72,6 +72,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  *  @discussion The default value is `8.0f`.
  */
 @property (assign, nonatomic) CGFloat leftContentPadding;
+@property (assign, nonatomic) CGFloat photoBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat videoBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat locationBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat pollBarButtonContentPadding;
 
 /**
  *  The container view for the leftBarButtonItem.

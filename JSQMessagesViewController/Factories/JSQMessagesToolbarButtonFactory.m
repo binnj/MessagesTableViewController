@@ -36,6 +36,7 @@
     [accessoryButton setImage:highlightedImage forState:UIControlStateHighlighted];
     
     accessoryButton.contentMode = UIViewContentModeScaleAspectFit;
+    accessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     accessoryButton.backgroundColor = [UIColor clearColor];
     accessoryButton.tintColor = [UIColor lightGrayColor];
     
@@ -52,6 +53,7 @@
     [photoButton setImage:highlightedPhotoImage forState:UIControlStateHighlighted];
     
     photoButton.contentMode = UIViewContentModeScaleAspectFit;
+    photoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     photoButton.backgroundColor = [UIColor clearColor];
     photoButton.tintColor = [UIColor lightGrayColor];
     
@@ -68,6 +70,7 @@
     [videoButton setImage:highlightedVideoImage forState:UIControlStateHighlighted];
     
     videoButton.contentMode = UIViewContentModeScaleAspectFit;
+    videoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     videoButton.backgroundColor = [UIColor clearColor];
     videoButton.tintColor = [UIColor lightGrayColor];
     
@@ -84,6 +87,7 @@
     [locationButton setImage:highlightedLocationImage forState:UIControlStateHighlighted];
     
     locationButton.contentMode = UIViewContentModeScaleAspectFit;
+    locationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     locationButton.backgroundColor = [UIColor clearColor];
     locationButton.tintColor = [UIColor lightGrayColor];
     
@@ -100,6 +104,7 @@
     [pollButton setImage:highlightedPollImage forState:UIControlStateHighlighted];
     
     pollButton.contentMode = UIViewContentModeScaleAspectFit;
+    pollButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     pollButton.backgroundColor = [UIColor clearColor];
     pollButton.tintColor = [UIColor lightGrayColor];
     

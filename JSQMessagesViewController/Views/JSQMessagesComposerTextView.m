@@ -179,17 +179,6 @@
                 }
             }
         }
-        else if ([types containsObject:@"Apple Web Archive pasteboard type"])
-        {
-            for (NSDictionary* item in pasteboard.items) {
-                if (item[@"Apple Web Archive pasteboard type"]) {
-                    data = item[@"Apple Web Archive pasteboard type"];
-                    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSCharacterEncodingDocumentAttribute};
-                    [self setAttributedText: [[NSMutableAttributedString alloc]initWithData:data options:nil documentAttributes:nil error:nil]];
-                    break;
-                }
-            }
-        }
         else [super paste:sender];
         [self.pasteDelegate composerTextView:self didPasteWithSender:sender];
     }

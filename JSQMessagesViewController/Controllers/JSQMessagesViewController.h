@@ -50,6 +50,8 @@
  *  Returns the top banner view object managed by this view controller.
  */
 @property (weak, nonatomic, readonly) JSQMessagesTopBannerView *topBannerView;
+@property (weak, nonatomic, readonly) UIImageView *backgroundImageView;
+@property (weak, nonatomic, readonly) UIView *backgroundAlphaView;
 
 /**
  *  Returns the keyboard controller object used to manage the software keyboard.

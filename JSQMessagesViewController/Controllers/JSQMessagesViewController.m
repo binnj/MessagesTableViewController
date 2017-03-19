@@ -219,6 +219,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)setShowTopBannerView:(BOOL)showTopBannerView
 {
+    self.topBannerView.hidden = !showTopBannerView;
     if (_showTopBannerView == showTopBannerView) {
         return;
     }

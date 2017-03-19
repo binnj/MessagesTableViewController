@@ -36,25 +36,61 @@
                     <cells/>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-tV-tTy" customClass="JSQMessagesTopBannerView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbP-t6-1rl">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="BqY-6X-Z8D">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                            <items/>
+                        </toolbar>
+                        <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZS-0g-vgj" userLabel="Alpha View">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view hidden="YES" alpha="0.15000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cop-sU-Qew" userLabel="MOTD Alpha View">
+                            <rect key="frame" x="8" y="8" width="304" height="64"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idunt ut labore et dolore magna aliqua. Ut enim " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CI1-pk-IYG">
+                            <rect key="frame" x="20" y="31" width="280" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMm-tx-yFU">
+                            <rect key="frame" x="20" y="10" width="280" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="BpJ-1X-6hT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="ZbP-t6-1rl" firstAttribute="top" secondItem="Mha-tV-tTy" secondAttribute="top" id="08L-kP-xyl"/>
-                        <constraint firstItem="ZbP-t6-1rl" firstAttribute="leading" secondItem="Mha-tV-tTy" secondAttribute="leading" id="1tn-LI-TKd"/>
-                        <constraint firstAttribute="bottom" secondItem="ZbP-t6-1rl" secondAttribute="bottom" id="8QU-x4-Xna"/>
-                        <constraint firstAttribute="height" id="aNj-bg-a4G"/>
-                        <constraint firstAttribute="trailing" secondItem="ZbP-t6-1rl" secondAttribute="trailing" id="alP-4Z-dGm"/>
+                        <constraint firstItem="BqY-6X-Z8D" firstAttribute="top" secondItem="Mha-tV-tTy" secondAttribute="top" id="5ne-Pb-CXq"/>
+                        <constraint firstItem="wMm-tx-yFU" firstAttribute="top" secondItem="Mha-tV-tTy" secondAttribute="top" constant="10" id="8kz-Gc-rKS"/>
+                        <constraint firstAttribute="trailing" secondItem="XZS-0g-vgj" secondAttribute="trailing" id="9o2-Gy-IR8"/>
+                        <constraint firstItem="BqY-6X-Z8D" firstAttribute="leading" secondItem="Mha-tV-tTy" secondAttribute="leading" id="CxQ-LH-vSk"/>
+                        <constraint firstAttribute="bottom" secondItem="XZS-0g-vgj" secondAttribute="bottom" id="Kq3-xe-pcT"/>
+                        <constraint firstItem="cop-sU-Qew" firstAttribute="leading" secondItem="Mha-tV-tTy" secondAttribute="leading" constant="8" id="M2k-tV-smt"/>
+                        <constraint firstItem="wMm-tx-yFU" firstAttribute="leading" secondItem="Mha-tV-tTy" secondAttribute="leading" constant="20" id="P5N-6k-gAX"/>
+                        <constraint firstItem="cop-sU-Qew" firstAttribute="top" secondItem="Mha-tV-tTy" secondAttribute="top" constant="8" id="ROA-IW-BS5"/>
+                        <constraint firstItem="CI1-pk-IYG" firstAttribute="trailing" secondItem="wMm-tx-yFU" secondAttribute="trailing" id="Td8-MJ-ToH"/>
+                        <constraint firstAttribute="bottom" secondItem="cop-sU-Qew" secondAttribute="bottom" constant="8" id="USN-qz-VeS"/>
+                        <constraint firstAttribute="height" constant="80" id="aNj-bg-a4G"/>
+                        <constraint firstAttribute="trailing" secondItem="BqY-6X-Z8D" secondAttribute="trailing" id="bKi-ti-umn"/>
+                        <constraint firstItem="CI1-pk-IYG" firstAttribute="top" secondItem="wMm-tx-yFU" secondAttribute="bottom" id="iYj-rX-3Vb"/>
+                        <constraint firstItem="CI1-pk-IYG" firstAttribute="leading" secondItem="wMm-tx-yFU" secondAttribute="leading" id="iZX-yC-scX"/>
+                        <constraint firstAttribute="bottom" secondItem="BqY-6X-Z8D" secondAttribute="bottom" id="j3z-gs-Z4w"/>
+                        <constraint firstAttribute="trailing" secondItem="cop-sU-Qew" secondAttribute="trailing" constant="8" id="kmW-eC-Z7f"/>
+                        <constraint firstAttribute="trailing" secondItem="wMm-tx-yFU" secondAttribute="trailing" constant="20" id="mPM-cH-BYx"/>
+                        <constraint firstItem="XZS-0g-vgj" firstAttribute="leading" secondItem="Mha-tV-tTy" secondAttribute="leading" id="p6k-iV-1fr"/>
+                        <constraint firstItem="XZS-0g-vgj" firstAttribute="top" secondItem="Mha-tV-tTy" secondAttribute="top" id="yCg-hE-tkO"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CI1-pk-IYG" secondAttribute="bottom" constant="10" id="yH6-t6-eAK"/>
                     </constraints>
                     <connections>
-                        <outlet property="topBannerLabel" destination="ZbP-t6-1rl" id="8q9-IP-W7L"/>
+                        <outlet property="topBannerLabel" destination="CI1-pk-IYG" id="Gkc-4Q-NDz"/>
                         <outlet property="topBannerViewHeightConstraint" destination="aNj-bg-a4G" id="QRJ-Ow-WOF"/>
                         <outlet property="topBannerViewTopConstraint" destination="vZM-5c-n3V" id="u0R-G7-ufr"/>
                     </connections>

@@ -24,12 +24,13 @@ const CGFloat kJSQMessagesTopBannerViewHeight = 50.0f;
 
 
 @implementation JSQMessagesTopBannerView
+@synthesize topBannerViewHeight = _topBannerViewHeight;
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    [super setBackgroundColor:backgroundColor];
-    self.topBannerLabel.backgroundColor = backgroundColor;
-}
+//- (void)setBackgroundColor:(UIColor *)backgroundColor
+//{
+//    [super setBackgroundColor:backgroundColor];
+//    self.topBannerLabel.backgroundColor = backgroundColor;
+//}
 
 - (void)setTopBannerViewHeight:(CGFloat)topBannerViewHeight
 {
@@ -38,10 +39,21 @@ const CGFloat kJSQMessagesTopBannerViewHeight = 50.0f;
     [self setNeedsUpdateConstraints];
 }
 
+-(CGFloat)topBannerViewHeight
+{
+    if (_topBannerViewHeight == NSNotFound) {
+        CGSize size = [self.topBannerLabel sizeThatFits:CGSizeMake(self.topBannerLabel.bounds.size.width, CGFLOAT_MAX)];
+        [self.topBannerLabel sizeToFit];
+        self.topBannerViewHeight = self.topBannerLabel.bounds.size.height + 44.0f;
+    }
+    return _topBannerViewHeight;
+}
+
 -(void)setTopBannerViewTop:(CGFloat)topBannerViewTop
 {
     _topBannerViewTop = topBannerViewTop;
     self.topBannerViewTopConstraint.constant = topBannerViewTop;
+    _topBannerViewHeight = NSNotFound;
     [self setNeedsUpdateConstraints];
 }
 

@@ -225,8 +225,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     }
     
     _showTopBannerView = showTopBannerView;
-    
-    self.topBannerView.topBannerViewHeight = showTopBannerView ? kJSQMessagesTopBannerViewHeight : 0.0f;
 }
 
 - (void)setTopContentAdditionalInset:(CGFloat)topContentAdditionalInset

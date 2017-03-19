@@ -33,6 +33,11 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesTopBannerViewHeight;
 @property (assign, nonatomic) CGFloat topBannerViewHeight;
 
 /**
+ *  Specifies the top inset of the top banner.
+ */
+@property (assign, nonatomic) CGFloat topBannerViewTop;
+
+/**
  *  Specifies the background color of the top banner.
  */
 @property (assign, nonatomic) UIColor* backgroundColor;

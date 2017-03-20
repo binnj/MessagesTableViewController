@@ -21,6 +21,7 @@
 #import "JSQMessagesCollectionViewFlowLayoutInvalidationContext.h"
 
 #import "JSQMessageData.h"
+#import "JSQMessageAttributedData.h"
 #import "JSQMessageBubbleImageDataSource.h"
 #import "JSQMessageAvatarImageDataSource.h"
 
@@ -29,6 +30,7 @@
 
 #import "JSQMessagesTypingIndicatorFooterView.h"
 #import "JSQMessagesLoadEarlierHeaderView.h"
+#import "JSQMessagesTopBannerView.h"
 
 #import "JSQMessagesToolbarContentView.h"
 #import "JSQMessagesInputToolbar.h"
@@ -51,6 +53,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet JSQMessagesInputToolbar *inputToolbar;
+@property (weak, nonatomic) IBOutlet JSQMessagesTopBannerView *topBannerView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarBottomLayoutGuide;
@@ -146,6 +149,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     self.showTypingIndicator = NO;
 
     self.showLoadEarlierMessagesHeader = NO;
+    
+    self.showTopBannerView = NO;
 
     self.topContentAdditionalInset = 0.0f;
 
@@ -210,6 +215,17 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     [self.collectionView reloadData];
 }
 
+- (void)setShowTopBannerView:(BOOL)showTopBannerView
+{
+    if (_showTopBannerView == showTopBannerView) {
+        return;
+    }
+    
+    _showTopBannerView = showTopBannerView;
+    
+    self.topBannerView.topBannerViewHeight = showTopBannerView ? kJSQMessagesTopBannerViewHeight : 0.0f;
+}
+
 - (void)setTopContentAdditionalInset:(CGFloat)topContentAdditionalInset
 {
     _topContentAdditionalInset = topContentAdditionalInset;
@@ -239,8 +255,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     if (self.automaticallyScrollsToMostRecentMessage) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self scrollToBottomAnimated:NO];
             [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+//            [self scrollToBottomAnimated:NO];
         });
     }
 
@@ -326,6 +342,26 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
 }
 
+- (void)didPressPhotoButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressVideoButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressLocationButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressPollButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
 - (void)finishSendingMessage
 {
     [self finishSendingMessageAnimated:YES];
@@ -335,6 +371,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     UITextView *textView = self.inputToolbar.contentView.textView;
     textView.text = nil;
+    //workaround for textview change back to default
+    UIFont *systemFont = [UIFont systemFontOfSize:16.0f];
+    NSDictionary * fontAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:systemFont, NSFontAttributeName, nil];
+    textView.attributedText = [[NSMutableAttributedString alloc] initWithString:@"." attributes:fontAttributes];
+    textView.attributedText = nil;
     [textView.undoManager removeAllActions];
 
     [self.inputToolbar toggleSendButtonEnabled];
@@ -481,15 +522,16 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     cell.delegate = collectionView;
 
     if (!isMediaMessage) {
-        cell.textView.text = [messageItem text];
-
-        if ([UIDevice jsq_isCurrentDeviceBeforeiOS8]) {
-            //  workaround for iOS 7 textView data detectors bug
-            cell.textView.text = nil;
-            cell.textView.attributedText = [[NSAttributedString alloc] initWithString:[messageItem text]
-                                                                           attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
+        if ([messageItem conformsToProtocol:@protocol(JSQMessageAttributedData)])
+        {
+            id <JSQMessageAttributedData> attributedMessageItem =  (id <JSQMessageAttributedData>) messageItem;
+            cell.textView.attributedText = [attributedMessageItem attributedText];
         }
-
+        else
+        {
+            cell.textView.text = nil;
+            cell.textView.attributedText = [[NSAttributedString alloc] initWithString:[messageItem text] attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
+        }
         NSParameterAssert(cell.textView.text != nil);
 
         id<JSQMessageBubbleImageDataSource> bubbleImageDataSource = [collectionView.dataSource collectionView:collectionView messageBubbleImageDataForItemAtIndexPath:indexPath];
@@ -530,6 +572,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     cell.cellTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellBottomLabelAtIndexPath:indexPath];
+    [cell.cellBottomLabel sizeToFit];
 
     CGFloat bubbleTopLabelInset = (avatarImageDataSource != nil) ? 60.0f : 15.0f;
 
@@ -660,6 +703,14 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath { }
 
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath { }
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelAtIndexPath:(NSIndexPath *)indexPath { }
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelLeftSideAtIndexPath:(NSIndexPath *)indexPath { }
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleBottomLabelRightSideAtIndexPath:(NSIndexPath *)indexPath { }
+
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
  didTapCellAtIndexPath:(NSIndexPath *)indexPath
          touchLocation:(CGPoint)touchLocation { }
@@ -678,6 +729,26 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
                senderDisplayName:self.senderDisplayName
                             date:[NSDate date]];
     }
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPhotoBarButton:(UIButton *)sender
+{
+    [self didPressPhotoButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressVideoBarButton:(UIButton *)sender
+{
+    [self didPressVideoButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressLocationBarButton:(UIButton *)sender
+{
+    [self didPressLocationButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPollBarButton:(UIButton *)sender
+{
+    [self didPressPollButton:sender];
 }
 
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
@@ -724,6 +795,13 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         return;
     }
 
+    if (!textView.text.length) {
+        //workaroung for textview change back to default
+        UIFont *systemFont = [UIFont systemFontOfSize:16.0f];
+        NSDictionary * fontAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:systemFont, NSFontAttributeName, nil];
+        textView.attributedText = [[NSMutableAttributedString alloc] initWithString:@"." attributes:fontAttributes];
+        textView.attributedText = nil;
+    }
     [self.inputToolbar toggleSendButtonEnabled];
 }
 
@@ -800,7 +878,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
             [self jsq_adjustInputToolbarForComposerTextViewContentSizeChange:dy];
             [self jsq_updateCollectionViewInsets];
             if (self.automaticallyScrollsToMostRecentMessage) {
-                [self scrollToBottomAnimated:NO];
+//                [self scrollToBottomAnimated:NO];
             }
         }
     }

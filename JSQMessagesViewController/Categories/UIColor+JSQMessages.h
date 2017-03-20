@@ -42,6 +42,10 @@
  */
 + (UIColor *)jsq_messageBubbleLightGrayColor;
 
++ (UIColor *)jsq_messageBackground;
+
++ (UIColor *)jsq_toolbarBackground;
+
 #pragma mark - Utilities
 
 /**

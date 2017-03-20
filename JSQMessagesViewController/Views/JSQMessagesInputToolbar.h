@@ -49,6 +49,14 @@
  */
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
        didPressLeftBarButton:(UIButton *)sender;
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
+       didPressPhotoBarButton:(UIButton *)sender;
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
+       didPressVideoBarButton:(UIButton *)sender;
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
+       didPressLocationBarButton:(UIButton *)sender;
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
+       didPressPollBarButton:(UIButton *)sender;
 
 @end
 

@@ -46,6 +46,34 @@
 - (void)messagesCollectionViewCellDidTapMessageBubble:(JSQMessagesCollectionViewCell *)cell;
 
 /**
+ *  Tells the delegate that the message bubble top label of the cell has been tapped.
+ *
+ *  @param cell The cell that received the tap touch event.
+ */
+- (void)messagesCollectionViewCellDidTapMessageBubbleTopLabel:(JSQMessagesCollectionViewCell *)cell;
+
+/**
+ *  Tells the delegate that the message bubble bottom label of the cell has been tapped.
+ *
+ *  @param cell The cell that received the tap touch event.
+ */
+- (void)messagesCollectionViewCellDidTapMessageBubbleBottomLabel:(JSQMessagesCollectionViewCell *)cell;
+
+/**
+ *  Tells the delegate that the message bubble bottom label left side  has been tapped.
+ *
+ *  @param cell The cell that received the tap touch event.
+ */
+- (void)messagesCollectionViewCellDidTapMessageBubbleBottomLabelLeftSide:(JSQMessagesCollectionViewCell *)cell;
+
+/**
+ *  Tells the delegate that the message bubble bottom label right Side has been tapped.
+ *
+ *  @param cell The cell that received the tap touch event.
+ */
+- (void)messagesCollectionViewCellDidTapMessageBubbleBottomLabelRightSide:(JSQMessagesCollectionViewCell *)cell;
+
+/**
  *  Tells the delegate that the cell has been tapped at the point specified by position.
  *
  *  @param cell The cell that received the tap touch event.

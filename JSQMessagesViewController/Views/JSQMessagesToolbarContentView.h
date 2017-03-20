@@ -50,6 +50,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  *  Set this value to `nil` to remove the button.
  */
 @property (weak, nonatomic) UIButton *leftBarButtonItem;
+@property (weak, nonatomic) UIButton *photoBarButtonItem;
+@property (weak, nonatomic) UIButton *videoBarButtonItem;
+@property (weak, nonatomic) UIButton *locationBarButtonItem;
+@property (weak, nonatomic) UIButton *pollBarButtonItem;
 
 /**
  *  Specifies the width of the leftBarButtonItem.
@@ -57,6 +61,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  *  @discussion This property modifies the width of the leftBarButtonContainerView.
  */
 @property (assign, nonatomic) CGFloat leftBarButtonItemWidth;
+@property (assign, nonatomic) CGFloat photoBarButtonItemWidth;
+@property (assign, nonatomic) CGFloat videoBarButtonItemWidth;
+@property (assign, nonatomic) CGFloat locationBarButtonItemWidth;
+@property (assign, nonatomic) CGFloat pollBarButtonItemWidth;
 
 /**
  *  Specifies the amount of spacing between the content view and the leading edge of leftBarButtonItem.
@@ -64,6 +72,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  *  @discussion The default value is `8.0f`.
  */
 @property (assign, nonatomic) CGFloat leftContentPadding;
+@property (assign, nonatomic) CGFloat photoBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat videoBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat locationBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat pollBarButtonContentPadding;
 
 /**
  *  The container view for the leftBarButtonItem.
@@ -74,6 +86,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  *  in your `JSQMessagesViewController` subclass.
  */
 @property (weak, nonatomic, readonly) UIView *leftBarButtonContainerView;
+@property (weak, nonatomic, readonly) UIView *photoBarButtonContainerView;
+@property (weak, nonatomic, readonly) UIView *videoBarButtonContainerView;
+@property (weak, nonatomic, readonly) UIView *locationBarButtonContainerView;
+@property (weak, nonatomic, readonly) UIView *pollBarButtonContainerView;
 
 /**
  *  A custom button item displayed on the right of the toolbar content view.

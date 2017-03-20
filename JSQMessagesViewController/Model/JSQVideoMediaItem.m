@@ -16,6 +16,7 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "JSQVideoMediaItem.h"
 
 #import "JSQMessagesMediaPlaceholderView.h"
@@ -88,18 +89,49 @@
     
     if (self.cachedVideoImageView == nil) {
         CGSize size = [self mediaViewDisplaySize];
-        UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+        UIImage *videoThumbnail = [self generateThumbnailFromVideo];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:playIcon];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:videoThumbnail];
         imageView.backgroundColor = [UIColor blackColor];
         imageView.frame = CGRectMake(0.0f, 0.0f, size.width, size.height);
-        imageView.contentMode = UIViewContentModeCenter;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
         [JSQMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:imageView isOutgoing:self.appliesMediaViewMaskAsOutgoing];
         self.cachedVideoImageView = imageView;
     }
     
     return self.cachedVideoImageView;
+}
+
+
+-(UIImage*)generateThumbnailFromVideo
+{
+    AVAsset *asset = [AVAsset assetWithURL: self.fileURL];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    
+    [imageGenerator setAppliesPreferredTrackTransform:YES];
+    CMTime time = CMTimeMake(1, 1);
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:[UIColor blackColor]];
+    CGPoint point = {0.0f, 0.0f};
+    thumbnail = [self drawImage:playIcon inImage:thumbnail atPoint:point];
+    return thumbnail;
+}
+-(UIImage*) drawImage:(UIImage*) fgImage
+              inImage:(UIImage*) bgImage
+              atPoint:(CGPoint)  point
+{
+    UIGraphicsBeginImageContextWithOptions(bgImage.size, FALSE, 0.0);
+    [bgImage drawInRect:CGRectMake( 0, 0, bgImage.size.width, bgImage.size.height)];
+    CGFloat min = MIN(bgImage.size.width,bgImage.size.height);
+    [fgImage drawInRect:CGRectMake( (bgImage.size.width-(min/3))/2, (bgImage.size.height-(min/3))/2, (min/3), (min/3))];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 - (NSUInteger)mediaHash

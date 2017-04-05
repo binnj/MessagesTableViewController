@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="NO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <development version="7000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,21 +12,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-1S-Vg1" userLabel="Right button container">
-                    <rect key="frame" x="262" y="8" width="50" height="32"/>
+                    <rect key="frame" x="262" y="6" width="50" height="32"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="NaR-re-dJ4"/>
                         <constraint firstAttribute="width" constant="50" id="yde-S9-dHe"/>
                     </constraints>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-NT-mvr" customClass="JSQMessagesComposerTextView">
-                    <rect key="frame" x="152" y="7" width="102" height="32"/>
-                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ie-TU-juJ" userLabel="Photo button container">
-                    <rect key="frame" x="4" y="7" width="32" height="32"/>
+                    <rect key="frame" x="4" y="6" width="32" height="32"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="TDY-G9-7kS"/>
@@ -34,7 +28,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-BD-vcW" userLabel="Location button container">
-                    <rect key="frame" x="76" y="7" width="32" height="32"/>
+                    <rect key="frame" x="76" y="6" width="32" height="32"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="4PR-Ty-AWt"/>
@@ -42,7 +36,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQg-OG-fIo" userLabel="Poll button container">
-                    <rect key="frame" x="112" y="7" width="32" height="32"/>
+                    <rect key="frame" x="112" y="6" width="32" height="32"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="MSK-Kx-Yci" userLabel="Poll Bar Button Container View Width Constraint"/>
@@ -50,34 +44,38 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYR-gA-Q9o" userLabel="Video button container">
-                    <rect key="frame" x="40" y="7" width="32" height="32"/>
+                    <rect key="frame" x="40" y="6" width="32" height="32"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="370-ra-jO6" userLabel="Video Bar Button Container View Width Constraint"/>
                         <constraint firstAttribute="height" constant="32" id="h66-JZ-8IA"/>
                     </constraints>
                 </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-NT-mvr" customClass="JSQMessagesComposerTextView">
+                    <rect key="frame" x="152" y="6" width="102" height="32"/>
+                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="mtv-e9-oo8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="PQg-OG-fIo" secondAttribute="bottom" constant="8" id="1DE-Xh-2X6"/>
                 <constraint firstItem="Myo-1S-Vg1" firstAttribute="leading" secondItem="dm4-NT-mvr" secondAttribute="trailing" constant="8" id="7Ld-5r-Hp3"/>
-                <constraint firstItem="dm4-NT-mvr" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="9Tz-Wq-xIf"/>
+                <constraint firstItem="dm4-NT-mvr" firstAttribute="top" secondItem="1" secondAttribute="top" constant="6" id="9Tz-Wq-xIf"/>
                 <constraint firstItem="D1Q-BD-vcW" firstAttribute="leading" secondItem="iYR-gA-Q9o" secondAttribute="trailing" constant="4" id="GFt-IL-7vp"/>
-                <constraint firstAttribute="bottom" secondItem="D1Q-BD-vcW" secondAttribute="bottom" constant="8" id="Jfx-cE-sfI"/>
-                <constraint firstAttribute="bottom" secondItem="3ie-TU-juJ" secondAttribute="bottom" constant="8" id="KO2-L9-bbo"/>
-                <constraint firstAttribute="bottom" secondItem="iYR-gA-Q9o" secondAttribute="bottom" constant="8" id="NlI-5S-rjh"/>
                 <constraint firstItem="iYR-gA-Q9o" firstAttribute="leading" secondItem="3ie-TU-juJ" secondAttribute="trailing" constant="4" id="OUa-D4-bGj"/>
-                <constraint firstItem="D1Q-BD-vcW" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="PDk-YY-N54"/>
-                <constraint firstItem="3ie-TU-juJ" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="R76-WD-SZO"/>
+                <constraint firstItem="D1Q-BD-vcW" firstAttribute="top" secondItem="1" secondAttribute="top" constant="6" id="PDk-YY-N54"/>
+                <constraint firstItem="3ie-TU-juJ" firstAttribute="top" secondItem="1" secondAttribute="top" constant="6" id="R76-WD-SZO"/>
                 <constraint firstItem="dm4-NT-mvr" firstAttribute="leading" secondItem="PQg-OG-fIo" secondAttribute="trailing" constant="8" id="TRU-NP-Cvh"/>
-                <constraint firstItem="PQg-OG-fIo" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="U5X-Mi-OYT"/>
-                <constraint firstItem="Myo-1S-Vg1" firstAttribute="top" secondItem="1" secondAttribute="top" constant="8" id="XgX-WK-bC3"/>
+                <constraint firstItem="PQg-OG-fIo" firstAttribute="top" secondItem="1" secondAttribute="top" constant="6" id="U5X-Mi-OYT"/>
+                <constraint firstItem="Myo-1S-Vg1" firstAttribute="top" secondItem="1" secondAttribute="top" constant="6" id="XgX-WK-bC3"/>
                 <constraint firstAttribute="trailing" secondItem="Myo-1S-Vg1" secondAttribute="trailing" constant="8" id="ds6-61-GNv"/>
-                <constraint firstAttribute="bottom" secondItem="dm4-NT-mvr" secondAttribute="bottom" constant="8" id="gcG-mo-Crj"/>
                 <constraint firstItem="PQg-OG-fIo" firstAttribute="leading" secondItem="D1Q-BD-vcW" secondAttribute="trailing" constant="4" id="izc-k4-lnE"/>
                 <constraint firstItem="3ie-TU-juJ" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="4" id="kh2-a0-V3q"/>
-                <constraint firstItem="iYR-gA-Q9o" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="xNe-TG-Za0"/>
+                <constraint firstItem="iYR-gA-Q9o" firstAttribute="top" secondItem="1" secondAttribute="top" constant="6" id="xNe-TG-Za0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

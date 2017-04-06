@@ -30,7 +30,6 @@
 
 #import "JSQMessagesTypingIndicatorFooterView.h"
 #import "JSQMessagesLoadEarlierHeaderView.h"
-#import "JSQMessagesTopBannerView.h"
 
 #import "JSQMessagesToolbarContentView.h"
 #import "JSQMessagesInputToolbar.h"
@@ -53,7 +52,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet JSQMessagesInputToolbar *inputToolbar;
-@property (weak, nonatomic) IBOutlet JSQMessagesTopBannerView *topBannerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundAlphaView;
 
@@ -151,8 +149,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     self.showTypingIndicator = NO;
 
     self.showLoadEarlierMessagesHeader = NO;
-    
-    self.showTopBannerView = NO;
 
     self.topContentAdditionalInset = 0.0f;
 
@@ -215,16 +211,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
     [self.collectionView.collectionViewLayout invalidateLayout];
     [self.collectionView reloadData];
-}
-
-- (void)setShowTopBannerView:(BOOL)showTopBannerView
-{
-    self.topBannerView.hidden = !showTopBannerView;
-    if (_showTopBannerView == showTopBannerView) {
-        return;
-    }
-    
-    _showTopBannerView = showTopBannerView;
 }
 
 - (void)setTopContentAdditionalInset:(CGFloat)topContentAdditionalInset

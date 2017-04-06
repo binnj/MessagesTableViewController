@@ -21,7 +21,6 @@
 #import "JSQMessagesCollectionView.h"
 #import "JSQMessagesCollectionViewFlowLayout.h"
 #import "JSQMessagesInputToolbar.h"
-#import "JSQMessagesTopBannerView.h"
 #import "JSQMessagesKeyboardController.h"
 
 /**
@@ -46,10 +45,6 @@
  */
 @property (weak, nonatomic, readonly) JSQMessagesInputToolbar *inputToolbar;
 
-/**
- *  Returns the top banner view object managed by this view controller.
- */
-@property (weak, nonatomic, readonly) JSQMessagesTopBannerView *topBannerView;
 @property (weak, nonatomic, readonly) UIImageView *backgroundImageView;
 @property (weak, nonatomic, readonly) UIView *backgroundAlphaView;
 
@@ -172,14 +167,6 @@
  *  the top of the collection view in order to see the header.
  */
 @property (assign, nonatomic) BOOL showLoadEarlierMessagesHeader;
-
-/**
- *  Specifies whether or not the view controller should show the top Banner view.
- *
- *  @discussion Setting this property to `YES` will show the top Banner view immediately.
- *  Settings this property to `NO` will hide the header view immediately.
- */
-@property (assign, nonatomic) BOOL showTopBannerView;
 
 /**
  *  Specifies an additional inset amount to be added to the collectionView's contentInsets.top value.

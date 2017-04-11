@@ -24,13 +24,12 @@
 @property (assign, nonatomic) CGFloat topBannerViewTop;
 
 /**
- *  Specifies the height of the top banner.
- */
-@property (assign, nonatomic) CGFloat topBannerViewHeight;
-
-/**
  *  Specifies the background color of the top banner.
  */
 //@property (assign, nonatomic) UIColor* backgroundColor;
+
+-(void)setText:(NSString *)motdText;
+-(void)resizeForWidth:(CGFloat)width;
+-(CGFloat)topBannerHeight;
 
 @end

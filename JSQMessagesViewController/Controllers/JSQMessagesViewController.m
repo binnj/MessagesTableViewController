@@ -153,6 +153,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     self.showLoadEarlierMessagesHeader = NO;
     
     self.showTopBannerView = NO;
+    
+    self.topBannerView.topBannerViewHeight = 0.0f;
 
     self.topContentAdditionalInset = 0.0f;
 

@@ -29,9 +29,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-2b-4LK" customClass="JSQMessagesCollectionView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewLayout key="collectionViewLayout" id="dZl-7C-LHR" customClass="JSQMessagesCollectionViewFlowLayout"/>
+                    <cells/>
+                </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-tV-tTy" customClass="JSQMessagesTopBannerView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="aNj-bg-a4G"/>
                     </constraints>
@@ -40,12 +46,6 @@
                         <outlet property="topBannerViewTopConstraint" destination="vZM-5c-n3V" id="u0R-G7-ufr"/>
                     </connections>
                 </view>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-2b-4LK" customClass="JSQMessagesCollectionView">
-                    <rect key="frame" x="0.0" y="44" width="320" height="436"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <collectionViewLayout key="collectionViewLayout" id="dZl-7C-LHR" customClass="JSQMessagesCollectionViewFlowLayout"/>
-                    <cells/>
-                </collectionView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoD-Az-3DM" customClass="JSQMessagesInputToolbar">
                     <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                     <constraints>
@@ -59,6 +59,7 @@
                 <constraint firstAttribute="trailing" secondItem="Iiw-H7-6Z3" secondAttribute="trailing" id="15M-QN-Kvq"/>
                 <constraint firstItem="vkV-Xr-oCa" firstAttribute="top" secondItem="Iiw-H7-6Z3" secondAttribute="top" id="1TY-0t-DKw"/>
                 <constraint firstAttribute="trailing" secondItem="BoD-Az-3DM" secondAttribute="trailing" id="7xc-Ha-asg"/>
+                <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="9d8-l9-6iA"/>
                 <constraint firstAttribute="bottom" secondItem="Iiw-H7-6Z3" secondAttribute="bottom" id="Biz-MW-U6a"/>
                 <constraint firstItem="vkV-Xr-oCa" firstAttribute="leading" secondItem="Iiw-H7-6Z3" secondAttribute="leading" id="EZX-Tu-QDY"/>
                 <constraint firstItem="Iiw-H7-6Z3" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="KZb-7G-4V3"/>
@@ -68,7 +69,6 @@
                 <constraint firstAttribute="trailing" secondItem="Mha-tV-tTy" secondAttribute="trailing" id="Wkn-kr-Inm"/>
                 <constraint firstItem="vkV-Xr-oCa" firstAttribute="bottom" secondItem="Iiw-H7-6Z3" secondAttribute="bottom" id="Zt5-QX-KBO"/>
                 <constraint firstItem="Iiw-H7-6Z3" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="adR-JE-yp2"/>
-                <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="Mha-tV-tTy" secondAttribute="bottom" id="fxF-xr-iQq"/>
                 <constraint firstAttribute="bottom" secondItem="BoD-Az-3DM" secondAttribute="bottom" id="rHs-6q-NX4"/>
                 <constraint firstItem="BoD-Az-3DM" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="ts7-8f-0lH"/>
                 <constraint firstItem="Mha-tV-tTy" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="uPZ-Rm-oj0"/>

@@ -54,6 +54,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet JSQMessagesInputToolbar *inputToolbar;
 @property (weak, nonatomic) IBOutlet JSQMessagesTopBannerView *topBannerView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundAlphaView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarBottomLayoutGuide;
@@ -151,6 +153,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     self.showLoadEarlierMessagesHeader = NO;
     
     self.showTopBannerView = NO;
+    
+    self.topBannerView.topBannerViewHeight = 0.0f;
 
     self.topContentAdditionalInset = 0.0f;
 
@@ -217,13 +221,12 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)setShowTopBannerView:(BOOL)showTopBannerView
 {
+    self.topBannerView.hidden = !showTopBannerView;
     if (_showTopBannerView == showTopBannerView) {
         return;
     }
     
     _showTopBannerView = showTopBannerView;
-    
-    self.topBannerView.topBannerViewHeight = showTopBannerView ? kJSQMessagesTopBannerViewHeight : 0.0f;
 }
 
 - (void)setTopContentAdditionalInset:(CGFloat)topContentAdditionalInset
@@ -358,6 +361,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 }
 
 - (void)didPressPollButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
+- (void)didPressPhotoOrVideoButton:(UIButton *)sender
 {
     NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
 }
@@ -749,6 +757,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPollBarButton:(UIButton *)sender
 {
     [self didPressPollButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPhotoOrVideoBarButton:(UIButton *)sender
+{
+    [self didPressPhotoOrVideoButton:sender];
 }
 
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender

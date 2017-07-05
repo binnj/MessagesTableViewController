@@ -98,6 +98,18 @@
     return view;
 }
 
++ (instancetype)viewWithPhotoOrVideoIcon
+{
+    UIColor *lightGrayColor = [UIColor jsq_messageBubbleLightGrayColor];
+    UIImage *photoOrVideoIcon = [[UIImage jsq_defaultAccessoryImage] jsq_imageMaskedWithColor:[lightGrayColor jsq_colorByDarkeningColorWithValue:0.4f]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:photoOrVideoIcon];
+    
+    JSQMessagesMediaPlaceholderView *view =[[JSQMessagesMediaPlaceholderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 120.0f)
+                                                                                  backgroundColor:lightGrayColor
+                                                                                        imageView:imageView];
+    return view;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
               backgroundColor:(UIColor *)backgroundColor
         activityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView

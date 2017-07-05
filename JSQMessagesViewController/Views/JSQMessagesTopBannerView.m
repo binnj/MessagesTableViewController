@@ -7,31 +7,27 @@
 //
 
 #import "JSQMessagesTopBannerView.h"
-
 #import "NSBundle+JSQMessages.h"
-
-
-const CGFloat kJSQMessagesTopBannerViewHeight = 50.0f;
-
 
 @interface JSQMessagesTopBannerView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *topBannerLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBannerViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBannerViewHeightConstraint;
 
 @end
 
-
 @implementation JSQMessagesTopBannerView
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor
+-(void)setTopBannerViewTop:(CGFloat)topBannerViewTop
 {
-    [super setBackgroundColor:backgroundColor];
-    self.topBannerLabel.backgroundColor = backgroundColor;
+    _topBannerViewTop = topBannerViewTop;
+    self.topBannerViewTopConstraint.constant = topBannerViewTop;
+    [self setNeedsUpdateConstraints];
 }
 
-- (void)setTopBannerViewHeight:(CGFloat)topBannerViewHeight
+-(void)setTopBannerViewHeight:(CGFloat)topBannerViewHeight
 {
+    _topBannerViewHeight = topBannerViewHeight;
     self.topBannerViewHeightConstraint.constant = topBannerViewHeight;
     [self setNeedsUpdateConstraints];
 }

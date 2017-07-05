@@ -110,6 +110,23 @@
     
     return pollButton;
 }
++ (UIButton *)defaultPhotoOrVideoButtonItem
+{
+    UIImage *photoOrVideoImage = [UIImage jsq_defaultPhotoOrVideoImage];
+    UIImage *normalPhotoOrVideoImage = [photoOrVideoImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+    UIImage *highlightedPhotoOrVideoImage = [photoOrVideoImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+    
+    UIButton *photoOrVideoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, photoOrVideoImage.size.width, 32.0f)];
+    [photoOrVideoButton setImage:normalPhotoOrVideoImage forState:UIControlStateNormal];
+    [photoOrVideoButton setImage:highlightedPhotoOrVideoImage forState:UIControlStateHighlighted];
+    
+    photoOrVideoButton.contentMode = UIViewContentModeScaleAspectFit;
+    photoOrVideoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    photoOrVideoButton.backgroundColor = [UIColor clearColor];
+    photoOrVideoButton.tintColor = [UIColor lightGrayColor];
+    
+    return photoOrVideoButton;
+}
 
 + (UIButton *)defaultSendButtonItem
 {

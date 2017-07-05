@@ -46,6 +46,10 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pollBarButtonContainerViewWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pollBarButtonContainerViewLeftPaddingConstraint;
 
+@property (weak, nonatomic) IBOutlet UIView *photoOrVideoBarButtonContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoOrVideoBarButtonContainerViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photoOrVideoBarButtonContainerViewLeftPaddingConstraint;
+
 @property (weak, nonatomic) IBOutlet UIView *rightBarButtonContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightBarButtonContainerViewWidthConstraint;
 
@@ -90,6 +94,7 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     _videoBarButtonContainerView = nil;
     _locationBarButtonContainerView = nil;
     _pollBarButtonContainerView = nil;
+    _photoOrVideoBarButtonContainerView = nil;
     _rightBarButtonContainerView = nil;
 }
 
@@ -103,6 +108,7 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     self.videoBarButtonContainerView.backgroundColor = backgroundColor;
     self.locationBarButtonContainerView.backgroundColor = backgroundColor;
     self.pollBarButtonContainerView.backgroundColor = backgroundColor;
+    self.photoOrVideoBarButtonContainerView.backgroundColor = backgroundColor;
     self.rightBarButtonContainerView.backgroundColor = backgroundColor;
 }
 
@@ -291,6 +297,43 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     [self setNeedsUpdateConstraints];
 }
 
+- (void)setPhotoOrVideoBarButtonItem:(UIButton *)photoOrVideoBarButtonItem
+{
+    if (_photoOrVideoBarButtonItem) {
+        [_photoOrVideoBarButtonItem removeFromSuperview];
+    }
+    
+    if (!photoOrVideoBarButtonItem) {
+        _photoOrVideoBarButtonItem = nil;
+        self.leftHorizontalSpacingConstraint.constant = 0.0f;
+        self.photoOrVideoBarButtonItemWidth = 0.0f;
+        self.photoOrVideoBarButtonContainerView.hidden = YES;
+        return;
+    }
+    
+    if (CGRectEqualToRect(photoOrVideoBarButtonItem.frame, CGRectZero)) {
+        photoOrVideoBarButtonItem.frame = self.photoOrVideoBarButtonContainerView.bounds;
+    }
+    
+    self.photoOrVideoBarButtonContainerView.hidden = NO;
+    self.leftHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault;
+    self.photoOrVideoBarButtonItemWidth = CGRectGetWidth(photoOrVideoBarButtonItem.frame);
+    
+    [photoOrVideoBarButtonItem setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.photoOrVideoBarButtonContainerView addSubview:photoOrVideoBarButtonItem];
+    [self.photoOrVideoBarButtonContainerView jsq_pinAllEdgesOfSubview:photoOrVideoBarButtonItem];
+    [self setNeedsUpdateConstraints];
+    
+    _photoOrVideoBarButtonItem = photoOrVideoBarButtonItem;
+}
+
+- (void)setPhotoOrVideoBarButtonItemWidth:(CGFloat)photoOrVideoBarButtonItemWidth
+{
+    self.photoOrVideoBarButtonContainerViewWidthConstraint.constant = photoOrVideoBarButtonItemWidth;
+    [self setNeedsUpdateConstraints];
+}
+
 - (void)setRightBarButtonItem:(UIButton *)rightBarButtonItem
 {
     if (_rightBarButtonItem) {
@@ -364,6 +407,12 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     [self setNeedsUpdateConstraints];
 }
 
+- (void)setPhotoOrVideoBarButtonContentPadding:(CGFloat)photoOrVideoBarButtonContentPadding
+{
+    self.photoOrVideoBarButtonContainerViewLeftPaddingConstraint.constant = photoOrVideoBarButtonContentPadding;
+    [self setNeedsUpdateConstraints];
+}
+
 #pragma mark - Getters
 
 - (CGFloat)leftBarButtonItemWidth
@@ -389,6 +438,11 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 - (CGFloat)pollBarButtonItemWidth
 {
     return self.pollBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)photoOrVideoBarButtonItemWidth
+{
+    return self.photoBarButtonContainerViewWidthConstraint.constant;
 }
 
 - (CGFloat)rightBarButtonItemWidth
@@ -424,6 +478,11 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 - (CGFloat)pollBarButtonContentPadding
 {
     return self.pollBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)photoOrVideoBarButtonContentPadding
+{
+    return self.photoOrVideoBarButtonContainerViewWidthConstraint.constant;
 }
 
 #pragma mark - UIView overrides

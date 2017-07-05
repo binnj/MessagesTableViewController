@@ -87,6 +87,11 @@
 + (UIImage *)jsq_defaultPollImage;
 
 /**
+ *  @return The default input toolbar photoOrVideo image.
+ */
++ (UIImage *)jsq_defaultPhotoOrVideoImage;
+
+/**
  *  @return The default typing indicator image.
  */
 + (UIImage *)jsq_defaultTypingIndicatorImage;

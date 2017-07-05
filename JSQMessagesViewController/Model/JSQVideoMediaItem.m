@@ -125,7 +125,7 @@
     UIGraphicsBeginImageContextWithOptions(bgImage.size, FALSE, 0.0);
     [bgImage drawInRect:CGRectMake( 0, 0, bgImage.size.width, bgImage.size.height)];
     CGFloat min = MIN(bgImage.size.width,bgImage.size.height);
-    [fgImage drawInRect:CGRectMake((bgImage.size.width - (min / 3)) / 2, (bgImage.size.height - (min / 3)) / 2, (min / 3), (min / 3))];
+    [fgImage drawInRect:CGRectMake((bgImage.size.width - (min / 5)) / 2, (bgImage.size.height - (min / 5)) / 2, (min / 5), (min / 5))];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

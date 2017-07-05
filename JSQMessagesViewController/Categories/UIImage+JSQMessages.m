@@ -110,6 +110,11 @@
     return [UIImage jsq_bubbleImageFromBundleWithName:@"poll"];
 }
 
++ (UIImage *)jsq_defaultPhotoOrVideoImage
+{
+    return [UIImage jsq_bubbleImageFromBundleWithName:@"photoOrVideo"];
+}
+
 + (UIImage *)jsq_defaultTypingIndicatorImage
 {
     return [UIImage jsq_bubbleImageFromBundleWithName:@"typing"];

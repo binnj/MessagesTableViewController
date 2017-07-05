@@ -57,6 +57,8 @@
        didPressLocationBarButton:(UIButton *)sender;
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
        didPressPollBarButton:(UIButton *)sender;
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar
+      didPressPhotoOrVideoBarButton:(UIButton *)sender;
 
 @end
 

@@ -365,6 +365,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
 }
 
+- (void)didPressPhotoOrVideoButton:(UIButton *)sender
+{
+    NSAssert(NO, @"Error! required method not implemented in subclass. Need to implement %s", __PRETTY_FUNCTION__);
+}
+
 - (void)finishSendingMessage
 {
     [self finishSendingMessageAnimated:YES];
@@ -752,6 +757,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPollBarButton:(UIButton *)sender
 {
     [self didPressPollButton:sender];
+}
+
+- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressPhotoOrVideoBarButton:(UIButton *)sender
+{
+    [self didPressPhotoOrVideoButton:sender];
 }
 
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender

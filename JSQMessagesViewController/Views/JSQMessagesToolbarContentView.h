@@ -54,6 +54,7 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
 @property (weak, nonatomic) UIButton *videoBarButtonItem;
 @property (weak, nonatomic) UIButton *locationBarButtonItem;
 @property (weak, nonatomic) UIButton *pollBarButtonItem;
+@property (weak, nonatomic) UIButton *photoOrVideoBarButtonItem;
 
 /**
  *  Specifies the width of the leftBarButtonItem.
@@ -65,6 +66,7 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
 @property (assign, nonatomic) CGFloat videoBarButtonItemWidth;
 @property (assign, nonatomic) CGFloat locationBarButtonItemWidth;
 @property (assign, nonatomic) CGFloat pollBarButtonItemWidth;
+@property (assign, nonatomic) CGFloat photoOrVideoBarButtonItemWidth;
 
 /**
  *  Specifies the amount of spacing between the content view and the leading edge of leftBarButtonItem.
@@ -76,6 +78,7 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
 @property (assign, nonatomic) CGFloat videoBarButtonContentPadding;
 @property (assign, nonatomic) CGFloat locationBarButtonContentPadding;
 @property (assign, nonatomic) CGFloat pollBarButtonContentPadding;
+@property (assign, nonatomic) CGFloat photoOrVideoBarButtonContentPadding;
 
 /**
  *  The container view for the leftBarButtonItem.
@@ -90,6 +93,7 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
 @property (weak, nonatomic, readonly) UIView *videoBarButtonContainerView;
 @property (weak, nonatomic, readonly) UIView *locationBarButtonContainerView;
 @property (weak, nonatomic, readonly) UIView *pollBarButtonContainerView;
+@property (weak, nonatomic, readonly) UIView *photoOrVideoBarButtonContainerView;
 
 /**
  *  A custom button item displayed on the right of the toolbar content view.

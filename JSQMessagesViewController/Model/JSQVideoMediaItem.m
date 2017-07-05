@@ -116,18 +116,16 @@
     CGImageRelease(imageRef);
     
     UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:[UIColor blackColor]];
-    CGPoint point = {0.0f, 0.0f};
-    thumbnail = [self drawImage:playIcon inImage:thumbnail atPoint:point];
+    thumbnail = [self drawImage:playIcon inImage:thumbnail];
     return thumbnail;
 }
--(UIImage*) drawImage:(UIImage*) fgImage
-              inImage:(UIImage*) bgImage
-              atPoint:(CGPoint)  point
-{
+
+- (UIImage*)drawImage:(UIImage*)fgImage
+              inImage:(UIImage*)bgImage {
     UIGraphicsBeginImageContextWithOptions(bgImage.size, FALSE, 0.0);
     [bgImage drawInRect:CGRectMake( 0, 0, bgImage.size.width, bgImage.size.height)];
     CGFloat min = MIN(bgImage.size.width,bgImage.size.height);
-    [fgImage drawInRect:CGRectMake( (bgImage.size.width-(min/3))/2, (bgImage.size.height-(min/3))/2, (min/3), (min/3))];
+    [fgImage drawInRect:CGRectMake((bgImage.size.width - (min / 3)) / 2, (bgImage.size.height - (min / 3)) / 2, (min / 3), (min / 3))];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

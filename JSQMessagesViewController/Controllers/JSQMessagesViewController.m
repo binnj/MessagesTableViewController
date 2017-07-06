@@ -1051,7 +1051,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)jsq_updateCollectionViewInsets
 {
-    [self jsq_setCollectionViewInsetsTopValue:self.topLayoutGuide.length + self.topContentAdditionalInset
+    CGFloat topHeight = (self.navigationController) ? self.navigationController.navigationBar.frame.size.height + 20: self.topLayoutGuide.length;
+    [self jsq_setCollectionViewInsetsTopValue:topHeight + self.topContentAdditionalInset
                                   bottomValue:CGRectGetMaxY(self.collectionView.frame) - CGRectGetMinY(self.inputToolbar.frame)];
 }
 

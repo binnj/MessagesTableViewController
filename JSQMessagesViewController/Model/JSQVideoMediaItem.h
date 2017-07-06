@@ -38,6 +38,8 @@
  */
 @property (nonatomic, assign) BOOL isReadyToPlay;
 
+@property (assign, nonatomic) UIColor* playIconColor;
+
 /**
  *  Initializes and returns a video media item having the given fileURL.
  *

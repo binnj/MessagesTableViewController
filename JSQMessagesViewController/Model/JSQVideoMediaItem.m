@@ -43,6 +43,7 @@
         _fileURL = [fileURL copy];
         _isReadyToPlay = isReadyToPlay;
         _cachedVideoImageView = nil;
+        _playIconColor = [UIColor blackColor];
     }
     return self;
 }
@@ -71,6 +72,11 @@
 {
     _isReadyToPlay = isReadyToPlay;
     _cachedVideoImageView = nil;
+}
+
+- (void)setPlayIconColor:(UIColor *)playIconColor
+{
+    _playIconColor = playIconColor;
 }
 
 - (void)setAppliesMediaViewMaskAsOutgoing:(BOOL)appliesMediaViewMaskAsOutgoing
@@ -115,7 +121,7 @@
     UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     
-    UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:[UIColor blackColor]];
+    UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:self.playIconColor];
     thumbnail = [self drawImage:playIcon inImage:thumbnail];
     return thumbnail;
 }

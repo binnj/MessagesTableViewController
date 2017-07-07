@@ -40,6 +40,8 @@
 
 @property (nonatomic, strong) UIColor* playIconColor;
 
+@property (nonatomic, strong) UIImage* playIcon;
+
 /**
  *  Initializes and returns a video media item having the given fileURL.
  *

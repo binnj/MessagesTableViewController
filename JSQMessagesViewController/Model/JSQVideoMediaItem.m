@@ -44,6 +44,7 @@
         _isReadyToPlay = isReadyToPlay;
         _cachedVideoImageView = nil;
         _playIconColor = [UIColor blackColor];
+        _playIcon = nil;
     }
     return self;
 }
@@ -53,6 +54,7 @@
     _fileURL = nil;
     _cachedVideoImageView = nil;
     _playIconColor = nil;
+    _playIcon = nil;
 }
 
 - (void)clearCachedMediaViews
@@ -78,6 +80,11 @@
 - (void)setPlayIconColor:(UIColor *)playIconColor
 {
     _playIconColor = playIconColor;
+}
+
+- (void)setPlayIcon:(UIImage *)playIcon
+{
+    _playIcon = playIcon;
 }
 
 - (void)setAppliesMediaViewMaskAsOutgoing:(BOOL)appliesMediaViewMaskAsOutgoing
@@ -122,13 +129,13 @@
     CGImageRelease(imageRef);
     
     CGSize size = [self mediaViewDisplaySize];
-    BOOL isVertical = (size.height > size.width);
-    Float32 ratio = isVertical ? (size.height / thumbnail.size.height) : (size.width / thumbnail.size.width);
+    float ratio = ((size.width / size.height) > (thumbnail.size.width / thumbnail.size.height)) ? (size.width / thumbnail.size.width) : (size.height / thumbnail.size.height);
     
-    CGSize newSize = CGSizeMake(thumbnail.size.width * ratio, thumbnail.size.width * ratio);
-    thumbnail = [UIImage imageResize:thumbnail andResizeTo:newSize];
+    CGSize newSize = CGSizeMake(thumbnail.size.width * ratio, thumbnail.size.height * ratio);
+    thumbnail = [UIImage imageResize:thumbnail toSize:newSize];
     
-    UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:self.playIconColor];
+    UIImage *playIcon = self.playIcon ?: [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:self.playIconColor];
+//    playIcon = [UIImage imageResize:playIcon toSize:CGSizeMake(50, 50)];
     thumbnail = [self drawImage:playIcon inImage:thumbnail];
     return thumbnail;
 }
@@ -137,8 +144,7 @@
               inImage:(UIImage*)bgImage {
     UIGraphicsBeginImageContextWithOptions(bgImage.size, FALSE, 0.0);
     [bgImage drawInRect:CGRectMake( 0, 0, bgImage.size.width, bgImage.size.height)];
-    CGFloat min = MIN(bgImage.size.width,bgImage.size.height);
-    [fgImage drawInRect:CGRectMake((bgImage.size.width - (min / 5)) / 2, (bgImage.size.height - (min / 5)) / 2, (min / 5), (min / 5))];
+    [fgImage drawInRect:CGRectMake((bgImage.size.width - fgImage.size.width) / 2, (bgImage.size.height - fgImage.size.height) / 2, fgImage.size.width, fgImage.size.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

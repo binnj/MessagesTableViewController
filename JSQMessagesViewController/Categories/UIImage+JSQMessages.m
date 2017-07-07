@@ -55,14 +55,14 @@
     return [UIImage imageWithContentsOfFile:path];
 }
 
-+ (UIImage *)imageResize:(UIImage*)img andResizeTo:(CGSize)newSize
++ (UIImage *)imageResize:(UIImage*)image toSize:(CGSize)newSize
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
-    imageView.backgroundColor = [UIColor blackColor];
-    imageView.frame = CGRectMake(0.0f, 0.0f, newSize.width, newSize.height);
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.clipsToBounds = YES;
-    return imageView.image;
+    CGFloat scale = [[UIScreen mainScreen]scale];
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, scale);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 + (UIImage *)jsq_bubbleRegularImage

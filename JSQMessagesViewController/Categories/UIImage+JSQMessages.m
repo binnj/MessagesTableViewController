@@ -55,7 +55,7 @@
     return [UIImage imageWithContentsOfFile:path];
 }
 
-+ (UIImage *)imageResize :(UIImage*)img andResizeTo:(CGSize)newSize
++ (UIImage *)imageResize:(UIImage*)img andResizeTo:(CGSize)newSize
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
     imageView.backgroundColor = [UIColor blackColor];

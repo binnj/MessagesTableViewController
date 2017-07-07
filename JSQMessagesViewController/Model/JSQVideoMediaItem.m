@@ -52,6 +52,7 @@
 {
     _fileURL = nil;
     _cachedVideoImageView = nil;
+    _playIconColor = nil;
 }
 
 - (void)clearCachedMediaViews

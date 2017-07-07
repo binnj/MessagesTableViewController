@@ -57,12 +57,12 @@
 
 + (UIImage *)imageResize :(UIImage*)img andResizeTo:(CGSize)newSize
 {
-    CGFloat scale = [[UIScreen mainScreen]scale];
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, scale);
-    [img drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
+    imageView.backgroundColor = [UIColor blackColor];
+    imageView.frame = CGRectMake(0.0f, 0.0f, newSize.width, newSize.height);
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    return imageView.image;
 }
 
 + (UIImage *)jsq_bubbleRegularImage

@@ -121,6 +121,9 @@
     UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     
+    CGSize size = [self mediaViewDisplaySize];
+    thumbnail = [UIImage imageResize:thumbnail andResizeTo:size];
+    
     UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:self.playIconColor];
     thumbnail = [self drawImage:playIcon inImage:thumbnail];
     return thumbnail;

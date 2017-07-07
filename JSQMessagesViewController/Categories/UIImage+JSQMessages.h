@@ -30,6 +30,11 @@
 - (UIImage *)jsq_imageMaskedWithColor:(UIColor *)maskColor;
 
 /**
+ *  @return The resized image.
+ */
++ (UIImage *)imageResize :(UIImage*)img andResizeTo:(CGSize)newSize;
+
+/**
  *  @return The regular message bubble image.
  */
 + (UIImage *)jsq_bubbleRegularImage;

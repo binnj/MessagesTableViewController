@@ -109,7 +109,6 @@
     return self.cachedVideoImageView;
 }
 
-
 -(UIImage*)generateThumbnailFromVideo
 {
     AVAsset *asset = [AVAsset assetWithURL: self.fileURL];
@@ -122,7 +121,11 @@
     CGImageRelease(imageRef);
     
     CGSize size = [self mediaViewDisplaySize];
-    thumbnail = [UIImage imageResize:thumbnail andResizeTo:size];
+    BOOL isVertical = (size.height > size.width);
+    Float32 ratio = isVertical ? (size.height / thumbnail.size.height) : (size.width / thumbnail.size.width);
+    
+    CGSize newSize = CGSizeMake(thumbnail.size.width * ratio, thumbnail.size.width * ratio);
+    thumbnail = [UIImage imageResize:thumbnail andResizeTo:newSize];
     
     UIImage *playIcon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:self.playIconColor];
     thumbnail = [self drawImage:playIcon inImage:thumbnail];

@@ -32,7 +32,7 @@
 /**
  *  @return The resized image.
  */
-+ (UIImage *)imageResize:(UIImage*)image toSize:(CGSize)newSize;
++ (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize keepRatio:(BOOL)keepRatio;
 
 /**
  *  @return The regular message bubble image.

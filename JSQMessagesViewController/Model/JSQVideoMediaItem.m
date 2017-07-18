@@ -129,10 +129,7 @@
     CGImageRelease(imageRef);
     
     CGSize size = [self mediaViewDisplaySize];
-    float ratio = ((size.width / size.height) > (thumbnail.size.width / thumbnail.size.height)) ? (size.width / thumbnail.size.width) : (size.height / thumbnail.size.height);
-    
-    CGSize newSize = CGSizeMake(thumbnail.size.width * ratio, thumbnail.size.height * ratio);
-    thumbnail = [UIImage imageResize:thumbnail toSize:newSize];
+    thumbnail = [UIImage scaleImage:thumbnail toSize:size keepRatio:YES];
     
     UIImage *playIcon = self.playIcon ?: [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:self.playIconColor];
 //    playIcon = [UIImage imageResize:playIcon toSize:CGSizeMake(50, 50)];

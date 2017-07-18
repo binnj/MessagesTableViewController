@@ -55,12 +55,19 @@
     return [UIImage imageWithContentsOfFile:path];
 }
 
-+ (UIImage *)imageResize:(UIImage*)image toSize:(CGSize)newSize
-{
-    CGFloat scale = [[UIScreen mainScreen]scale];
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, scale);
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
++ (UIImage *)scaleImage:(UIImage *)image toSize:(CGSize)newSize keepRatio:(BOOL)keepRatio {
+    if (keepRatio) {
+        if ((newSize.width / newSize.height) > (image.size.width / image.size.height)) {
+            newSize.height = image.size.height * (newSize.width / image.size.width);
+        }
+        else {
+            newSize.width = image.size.width * (newSize.height / image.size.height);
+        }
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
 }

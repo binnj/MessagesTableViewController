@@ -31,12 +31,12 @@
     UIImage *normalImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
-    UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, accessoryImage.size.width, 32.0f)];
+    UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [accessoryButton setImage:normalImage forState:UIControlStateNormal];
     [accessoryButton setImage:highlightedImage forState:UIControlStateHighlighted];
     
     accessoryButton.contentMode = UIViewContentModeScaleAspectFit;
-    accessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    accessoryButton.imageView.contentMode = UIViewContentModeCenter;
     accessoryButton.backgroundColor = [UIColor clearColor];
     accessoryButton.tintColor = [UIColor lightGrayColor];
     
@@ -48,12 +48,12 @@
     UIImage *normalPhotoImage = [photoImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedPhotoImage = [photoImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
-    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, photoImage.size.width, 32.0f)];
+    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [photoButton setImage:normalPhotoImage forState:UIControlStateNormal];
     [photoButton setImage:highlightedPhotoImage forState:UIControlStateHighlighted];
     
     photoButton.contentMode = UIViewContentModeScaleAspectFit;
-    photoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    photoButton.imageView.contentMode = UIViewContentModeCenter;
     photoButton.backgroundColor = [UIColor clearColor];
     photoButton.tintColor = [UIColor lightGrayColor];
     
@@ -65,12 +65,12 @@
     UIImage *normalVideoImage = [videoImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedVideoImage = [videoImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
-    UIButton *videoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, videoImage.size.width, 32.0f)];
+    UIButton *videoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [videoButton setImage:normalVideoImage forState:UIControlStateNormal];
     [videoButton setImage:highlightedVideoImage forState:UIControlStateHighlighted];
     
     videoButton.contentMode = UIViewContentModeScaleAspectFit;
-    videoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    videoButton.imageView.contentMode = UIViewContentModeCenter;
     videoButton.backgroundColor = [UIColor clearColor];
     videoButton.tintColor = [UIColor lightGrayColor];
     
@@ -82,12 +82,12 @@
     UIImage *normalLocationImage = [locationImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedLocationImage = [locationImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
-    UIButton *locationButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, locationImage.size.width, 32.0f)];
+    UIButton *locationButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [locationButton setImage:normalLocationImage forState:UIControlStateNormal];
     [locationButton setImage:highlightedLocationImage forState:UIControlStateHighlighted];
     
     locationButton.contentMode = UIViewContentModeScaleAspectFit;
-    locationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    locationButton.imageView.contentMode = UIViewContentModeCenter;
     locationButton.backgroundColor = [UIColor clearColor];
     locationButton.tintColor = [UIColor lightGrayColor];
     
@@ -99,12 +99,12 @@
     UIImage *normalPollImage = [pollImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedPollImage = [pollImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
-    UIButton *pollButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, pollImage.size.width, 32.0f)];
+    UIButton *pollButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [pollButton setImage:normalPollImage forState:UIControlStateNormal];
     [pollButton setImage:highlightedPollImage forState:UIControlStateHighlighted];
     
     pollButton.contentMode = UIViewContentModeScaleAspectFit;
-    pollButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    pollButton.imageView.contentMode = UIViewContentModeCenter;
     pollButton.backgroundColor = [UIColor clearColor];
     pollButton.tintColor = [UIColor lightGrayColor];
     
@@ -116,12 +116,12 @@
     UIImage *normalPhotoOrVideoImage = [photoOrVideoImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
     UIImage *highlightedPhotoOrVideoImage = [photoOrVideoImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
-    UIButton *photoOrVideoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, photoOrVideoImage.size.width, 32.0f)];
+    UIButton *photoOrVideoButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
     [photoOrVideoButton setImage:normalPhotoOrVideoImage forState:UIControlStateNormal];
     [photoOrVideoButton setImage:highlightedPhotoOrVideoImage forState:UIControlStateHighlighted];
     
     photoOrVideoButton.contentMode = UIViewContentModeScaleAspectFit;
-    photoOrVideoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    photoOrVideoButton.imageView.contentMode = UIViewContentModeCenter;
     photoOrVideoButton.backgroundColor = [UIColor clearColor];
     photoOrVideoButton.tintColor = [UIColor lightGrayColor];
     

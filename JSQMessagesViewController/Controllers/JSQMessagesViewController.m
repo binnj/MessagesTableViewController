@@ -1051,9 +1051,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)jsq_updateCollectionViewInsets
 {
-    BOOL isIOS11 = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11);
-    CGFloat topHeight = (self.navigationController && !isIOS11) ?self.navigationController.navigationBar.frame.size.height + 20 : self.topLayoutGuide.length;
-    [self jsq_setCollectionViewInsetsTopValue:topHeight + self.topContentAdditionalInset
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self jsq_setCollectionViewInsetsTopValue:self.topLayoutGuide.length + self.topContentAdditionalInset
                                   bottomValue:CGRectGetMaxY(self.collectionView.frame) - CGRectGetMinY(self.inputToolbar.frame)];
 }
 

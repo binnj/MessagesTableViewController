@@ -130,7 +130,7 @@
 
 + (UIButton *)defaultSendButtonItem
 {
-    return [self defaultButtonItemWithTitle:@"Send"];
+    return [self defaultButtonItemWithTitle:NSLocalizedString(@"Send", nil)];
 }
 
 + (UIButton *)defaultButtonItemWithTitle:(NSString*)title

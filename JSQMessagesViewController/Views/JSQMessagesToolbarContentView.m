@@ -383,13 +383,13 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     [self setNeedsUpdateConstraints];
 }
 
-- (void)setPhotoContentPadding:(CGFloat)photoBarButtonContentPadding
+- (void)setPhotoBarButtonContentPadding:(CGFloat)photoBarButtonContentPadding
 {
     self.photoBarButtonContainerViewLeftPaddingConstraint.constant = photoBarButtonContentPadding;
     [self setNeedsUpdateConstraints];
 }
 
-- (void)setVideoContentPadding:(CGFloat)videoBarButtonContentPadding
+- (void)setVideoBarButtonContentPadding:(CGFloat)videoBarButtonContentPadding
 {
     self.videoBarButtonContainerViewLeftPaddingConstraint.constant = videoBarButtonContentPadding;
     [self setNeedsUpdateConstraints];

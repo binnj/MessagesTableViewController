@@ -450,9 +450,14 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     UICollectionViewScrollPosition scrollPosition = (finalCellSize.height > maxHeightForVisibleMessage) ? UICollectionViewScrollPositionBottom : UICollectionViewScrollPositionTop;
 
-    [self.collectionView scrollToItemAtIndexPath:finalIndexPath
-                                atScrollPosition:scrollPosition
-                                        animated:animated];
+    if (animated) {
+        [self.collectionView scrollToItemAtIndexPath:finalIndexPath
+                                    atScrollPosition:scrollPosition
+                                            animated:animated];
+    }
+    else {
+        [self.collectionView setContentOffset:CGPointMake(0, 44+collectionViewContentHeight-(self.collectionView.bounds.size.height))];
+    }
 }
 
 #pragma mark - JSQMessages collection view data source

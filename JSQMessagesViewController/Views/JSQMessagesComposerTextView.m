@@ -40,6 +40,7 @@
 @implementation JSQMessagesComposerTextView
 
 @synthesize pasteDelegate;
+@synthesize shouldPasteRTF;
 
 #pragma mark - Initialization
 
@@ -163,6 +164,11 @@
 - (void)paste:(id)sender
 {
     if (!self.pasteDelegate || [self.pasteDelegate composerTextView:self shouldPasteWithSender:sender]) {
+        if (!shouldPasteRTF) {
+            [self setText:[UIPasteboard generalPasteboard].string];
+            [self.pasteDelegate composerTextView:self didPasteWithSender:sender];
+            return;
+        }
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         NSData* data = nil;
         NSMutableArray *types = [[NSMutableArray alloc]init];

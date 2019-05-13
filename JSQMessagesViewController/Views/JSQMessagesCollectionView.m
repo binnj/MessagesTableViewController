@@ -119,7 +119,6 @@
                                                                                     forIndexPath:indexPath];
 
     headerView.loadButton.tintColor = self.loadEarlierMessagesHeaderTextColor;
-    headerView.loadLabel.tintColor = [UIColor grayColor];
     headerView.delegate = self;
 
     return headerView;
@@ -131,6 +130,12 @@
 {
     if ([self.delegate respondsToSelector:@selector(collectionView:header:didTapLoadEarlierMessagesButton:)]) {
         [self.delegate collectionView:self header:headerView didTapLoadEarlierMessagesButton:sender];
+    }
+}
+- (void)headerView:(JSQMessagesLoadEarlierHeaderView *)headerView didLoadLabelTextChange:(NSString *)text {
+    
+    if ([self.delegate respondsToSelector:@selector(collectionView:header:didLoadLabelTextChange:)]) {
+        [self.delegate collectionView:self header:headerView didLoadLabelTextChange:text];
     }
 }
 

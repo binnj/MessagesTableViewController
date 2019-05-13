@@ -147,4 +147,14 @@
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender;
 
+/**
+ *  Notifies the delegate that the collection view's header load label text did change.
+ *
+ *  @param collectionView The collection view object that is notifying the delegate of the tap event.
+ *  @param headerView     The header view in the collection view.
+ *  @param text           The label text
+ */
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView
+                header:(JSQMessagesLoadEarlierHeaderView *)headerView didLoadLabelTextChange:(NSString *)text;
+
 @end

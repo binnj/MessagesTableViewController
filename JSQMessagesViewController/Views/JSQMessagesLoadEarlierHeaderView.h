@@ -41,6 +41,14 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight;
  */
 - (void)headerView:(JSQMessagesLoadEarlierHeaderView *)headerView didPressLoadButton:(UIButton *)sender;
 
+/**
+ *  Tells the delegate that the loadLabel text has changed.
+ *
+ *  @param headerView The header view that contains the label.
+ *  @param text     New text.
+ */
+- (void)headerView:(JSQMessagesLoadEarlierHeaderView *)headerView didLoadLabelTextChange:(NSString *)text;
+
 @end
 
 
@@ -62,14 +70,11 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight;
 @property (weak, nonatomic, readonly) UIButton *loadButton;
 
 /**
- *  Returns the load label of the header view.
- */
-@property (weak, nonatomic, readonly) UILabel *loadLabel;
-
-/**
  *  Returns the load label height of the header view.
  */
 @property (weak, nonatomic, readonly) NSLayoutConstraint *loadLabelHeight;
+
+- (void)setLoadLabelText:(NSString *)text;
 
 #pragma mark - Class methods
 

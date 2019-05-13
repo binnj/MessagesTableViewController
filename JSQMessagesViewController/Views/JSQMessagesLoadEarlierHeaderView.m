@@ -23,7 +23,7 @@
 
 
 const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
-const CGFloat kJSQMessagesLoadEarlierHeaderViewLoadLabelHeight = 12.0f;
+const CGFloat kJSQMessagesLoadEarlierHeaderViewLoadLabelHeight = 16.0f;
 
 
 @interface JSQMessagesLoadEarlierHeaderView ()

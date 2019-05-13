@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM4-IZ-dgW">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -25,12 +25,12 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oN-Ae-7Kr">
-                    <rect key="frame" x="0.0" y="32" width="320" height="0.0"/>
+                    <rect key="frame" x="0.0" y="30" width="320" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="height" id="aKp-jD-0RA"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -40,7 +40,6 @@
                 <constraint firstAttribute="trailing" secondItem="kM4-IZ-dgW" secondAttribute="trailing" id="Ori-kw-SaU"/>
                 <constraint firstAttribute="trailing" secondItem="9oN-Ae-7Kr" secondAttribute="trailing" id="cLr-6r-yhU"/>
                 <constraint firstItem="9oN-Ae-7Kr" firstAttribute="leading" secondItem="0Ms-a6-YUP" secondAttribute="leading" id="j06-AP-5DQ"/>
-                <constraint firstAttribute="bottom" secondItem="9oN-Ae-7Kr" secondAttribute="bottom" id="xRu-br-UVD"/>
                 <constraint firstItem="kM4-IZ-dgW" firstAttribute="top" secondItem="0Ms-a6-YUP" secondAttribute="top" id="zUW-1v-N5P"/>
             </constraints>
             <connections>

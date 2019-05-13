@@ -26,6 +26,11 @@
 FOUNDATION_EXPORT const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight;
 
 /**
+ *  A constant defining the default height of a `JSQMessagesLoadEarlierHeaderViewLoadLabel`.
+ */
+FOUNDATION_EXPORT const CGFloat kJSQMessagesLoadEarlierHeaderViewLoadLabelHeight;
+
+/**
  *  The `JSQMessagesLoadEarlierHeaderViewDelegate` defines methods that allow you to
  *  respond to interactions within the header view.
  */

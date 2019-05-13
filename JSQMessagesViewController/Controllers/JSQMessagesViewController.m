@@ -62,7 +62,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 @property (weak, nonatomic) UIView *snapshotView;
 
-@property CGFloat loadEarlierHeaderViewHeight;
+@property (assign, nonatomic) BOOL isLoadLabel;
 
 @property (assign, nonatomic) BOOL jsq_isObserving;
 
@@ -637,7 +637,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     if (!self.showLoadEarlierMessagesHeader) {
         return CGSizeZero;
     }
-    return CGSizeMake([collectionViewLayout itemWidth], kJSQMessagesLoadEarlierHeaderViewHeight + self.loadEarlierHeaderViewHeight);
+    return CGSizeMake([collectionViewLayout itemWidth], kJSQMessagesLoadEarlierHeaderViewHeight + (self.isLoadLabel ? kJSQMessagesLoadEarlierHeaderViewLoadLabelHeight : 0.0f));
 }
 
 #pragma mark - Collection view delegate
@@ -734,7 +734,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView
 didLoadLabelTextChange:(NSString *)text {
-    self.loadEarlierHeaderViewHeight = text.length > 0 ? 20.0f :  0.0f;
+    self.isLoadLabel = text.length > 0;
 }
 
 #pragma mark - Input toolbar delegate

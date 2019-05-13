@@ -61,6 +61,16 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight;
  */
 @property (weak, nonatomic, readonly) UIButton *loadButton;
 
+/**
+ *  Returns the load label of the header view.
+ */
+@property (weak, nonatomic, readonly) UILabel *loadLabel;
+
+/**
+ *  Returns the load label height of the header view.
+ */
+@property (weak, nonatomic, readonly) NSLayoutConstraint *loadLabelHeight;
+
 #pragma mark - Class methods
 
 /**

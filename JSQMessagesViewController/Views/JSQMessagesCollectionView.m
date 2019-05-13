@@ -119,6 +119,7 @@
                                                                                     forIndexPath:indexPath];
 
     headerView.loadButton.tintColor = self.loadEarlierMessagesHeaderTextColor;
+    headerView.loadLabel.tintColor = [UIColor grayColor];
     headerView.delegate = self;
 
     return headerView;

@@ -28,6 +28,8 @@ const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
 @interface JSQMessagesLoadEarlierHeaderView ()
 
 @property (weak, nonatomic) IBOutlet UIButton *loadButton;
+@property (weak, nonatomic) IBOutlet UILabel *loadLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loadLabelHeight;
 
 - (IBAction)loadButtonPressed:(UIButton *)sender;
 
@@ -66,6 +68,7 @@ const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
 - (void)dealloc
 {
     _loadButton = nil;
+    _loadLabel = nil;
     _delegate = nil;
 }
 
@@ -75,6 +78,7 @@ const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
 {
     [super setBackgroundColor:backgroundColor];
     self.loadButton.backgroundColor = backgroundColor;
+    self.loadLabel.backgroundColor = backgroundColor;
 }
 
 #pragma mark - Actions

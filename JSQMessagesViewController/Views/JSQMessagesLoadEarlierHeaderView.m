@@ -23,11 +23,14 @@
 
 
 const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
+const CGFloat kJSQMessagesLoadEarlierHeaderViewLoadLabelHeight = 16.0f;
 
 
 @interface JSQMessagesLoadEarlierHeaderView ()
 
 @property (weak, nonatomic) IBOutlet UIButton *loadButton;
+@property (weak, nonatomic) IBOutlet UILabel *loadLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loadLabelHeight;
 
 - (IBAction)loadButtonPressed:(UIButton *)sender;
 
@@ -61,11 +64,13 @@ const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
 
     [self.loadButton setTitle:[NSBundle jsq_localizedStringForKey:@"load_earlier_messages"] forState:UIControlStateNormal];
     self.loadButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.loadLabel.tintColor = [UIColor lightGrayColor];
 }
 
 - (void)dealloc
 {
     _loadButton = nil;
+    _loadLabel = nil;
     _delegate = nil;
 }
 
@@ -75,6 +80,14 @@ const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
 {
     [super setBackgroundColor:backgroundColor];
     self.loadButton.backgroundColor = backgroundColor;
+    self.loadLabel.backgroundColor = backgroundColor;
+}
+
+- (void)setLoadLabelText:(NSString *)text
+{
+    [self.delegate headerView:self didLoadLabelTextChange:text];
+    self.loadLabel.text = text;
+    self.loadLabelHeight.constant = text.length > 0 ? kJSQMessagesLoadEarlierHeaderViewLoadLabelHeight : 0.0f;
 }
 
 #pragma mark - Actions

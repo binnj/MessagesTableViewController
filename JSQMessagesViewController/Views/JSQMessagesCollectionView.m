@@ -132,6 +132,12 @@
         [self.delegate collectionView:self header:headerView didTapLoadEarlierMessagesButton:sender];
     }
 }
+- (void)headerView:(JSQMessagesLoadEarlierHeaderView *)headerView didLoadLabelTextChange:(NSString *)text {
+    
+    if ([self.delegate respondsToSelector:@selector(collectionView:header:didLoadLabelTextChange:)]) {
+        [self.delegate collectionView:self header:headerView didLoadLabelTextChange:text];
+    }
+}
 
 #pragma mark - Messages collection view cell delegate
 

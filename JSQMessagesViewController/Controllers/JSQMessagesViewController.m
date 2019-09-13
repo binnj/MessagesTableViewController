@@ -458,7 +458,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
                                             animated:animated];
     }
     else {
-        [self.collectionView setContentOffset:CGPointMake(0, 44+collectionViewContentHeight-(self.collectionView.bounds.size.height))];
+        [self.collectionView setContentOffset:CGPointMake(0, self.bottomLayoutGuide.length+44+collectionViewContentHeight-(self.collectionView.bounds.size.height))];
     }
 }
 

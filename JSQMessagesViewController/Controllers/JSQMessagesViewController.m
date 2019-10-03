@@ -915,13 +915,10 @@ didLoadLabelTextChange:(NSString *)text {
 
 - (void)keyboardController:(JSQMessagesKeyboardController *)keyboardController keyboardDidChangeFrame:(CGRect)keyboardFrame
 {
-    if (![self.inputToolbar.contentView.textView isFirstResponder] && self.toolbarBottomLayoutGuide.constant == 0.0f) {
-        return;
+    CGFloat heightFromBottom = MAX(0.0f, CGRectGetMaxY(self.collectionView.frame) - CGRectGetMinY(keyboardFrame));
+    if (![self.inputToolbar.contentView.textView isFirstResponder]) {
+        heightFromBottom = 0.0f;
     }
-
-    CGFloat heightFromBottom = CGRectGetMaxY(self.collectionView.frame) - CGRectGetMinY(keyboardFrame);
-
-    heightFromBottom = MAX(0.0f, heightFromBottom);
 
     [self jsq_setToolbarBottomLayoutGuideConstant:heightFromBottom];
 }

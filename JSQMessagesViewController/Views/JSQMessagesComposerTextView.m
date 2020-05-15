@@ -165,7 +165,8 @@
 {
     if (!self.pasteDelegate || [self.pasteDelegate composerTextView:self shouldPasteWithSender:sender]) {
         if (!shouldPasteRTF) {
-            [self setText:[UIPasteboard generalPasteboard].string];
+            NSString *newText = [(self.text ?: @"") stringByAppendingString:[UIPasteboard generalPasteboard].string];
+            [self setText:newText];
             [self.pasteDelegate composerTextView:self didPasteWithSender:sender];
             return;
         }

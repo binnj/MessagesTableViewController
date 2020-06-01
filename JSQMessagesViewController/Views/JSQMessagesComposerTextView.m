@@ -164,32 +164,7 @@
 - (void)paste:(id)sender
 {
     if (!self.pasteDelegate || [self.pasteDelegate composerTextView:self shouldPasteWithSender:sender]) {
-        if (!shouldPasteRTF) {
-            NSString *newText = [(self.text ?: @"") stringByAppendingString:[UIPasteboard generalPasteboard].string];
-            [self setText:newText];
-            [self.pasteDelegate composerTextView:self didPasteWithSender:sender];
-            return;
-        }
-        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        NSData* data = nil;
-        NSMutableArray *types = [[NSMutableArray alloc]init];
-        for (NSDictionary* item in pasteboard.items) {
-            for (NSString* type in item.allKeys)
-                [types addObject:type];
-        }
-        if ([types containsObject:@"com.apple.flat-rtfd"])
-        {
-            for (NSDictionary* item in pasteboard.items) {
-                if (item[@"com.apple.flat-rtfd"]) {
-                    data = item[@"com.apple.flat-rtfd"];
-                    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSRTFDTextDocumentType};
-                    [self setAttributedText: [[NSMutableAttributedString alloc]initWithData:data options:options documentAttributes:nil error:nil]];
-                    break;
-                }
-            }
-        }
-        else [super paste:sender];
-        [self.pasteDelegate composerTextView:self didPasteWithSender:sender];
+        [super paste:sender];
     }
 }
 

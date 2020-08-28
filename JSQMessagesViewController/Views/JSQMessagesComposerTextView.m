@@ -73,7 +73,6 @@
     self.keyboardAppearance = UIKeyboardAppearanceDefault;
     self.keyboardType = UIKeyboardTypeDefault;
     self.returnKeyType = UIReturnKeyDefault;
-    self.allowsEditingTextAttributes = YES;
     
     self.text = nil;
     self.attributedText = nil;

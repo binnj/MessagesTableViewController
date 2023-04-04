@@ -549,7 +549,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         else
         {
             cell.textView.text = nil;
-            cell.textView.attributedText = [[NSAttributedString alloc] initWithString:([messageItem text] ?: "") attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
+            cell.textView.attributedText = [[NSAttributedString alloc] initWithString:([messageItem text] ?: @"") attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
         }
         NSParameterAssert(cell.textView.text != nil);
 

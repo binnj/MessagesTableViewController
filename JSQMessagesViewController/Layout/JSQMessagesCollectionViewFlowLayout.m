@@ -313,6 +313,11 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 {
     NSArray *attributesInRect = [super layoutAttributesForElementsInRect:rect];
     
+    // This function is available in iOS 10. Disable it for dynamic position of `SupplementaryView`
+    if ([self.collectionView respondsToSelector:@selector(setPrefetchingEnabled:)]) {
+        self.collectionView.prefetchingEnabled = false;
+    }
+    
     if (self.springinessEnabled) {
         NSMutableArray *attributesInRectCopy = [attributesInRect mutableCopy];
         NSArray *dynamicAttributes = [self.dynamicAnimator itemsInRect:rect];
@@ -335,14 +340,22 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
         attributesInRect = attributesInRectCopy;
     }
     
-    [attributesInRect enumerateObjectsUsingBlock:^(JSQMessagesCollectionViewLayoutAttributes *attributesItem, NSUInteger idx, BOOL *stop) {
-        if (attributesItem.representedElementCategory == UICollectionElementCategoryCell) {
-            [self jsq_configureMessageCellLayoutAttributes:attributesItem];
-        }
-        else {
-            attributesItem.zIndex = -1;
-        }
-    }];
+    @try
+    {
+        [attributesInRect enumerateObjectsUsingBlock:^(JSQMessagesCollectionViewLayoutAttributes *attributesItem, NSUInteger idx, BOOL *stop) {
+            if (attributesItem.representedElementCategory == UICollectionElementCategoryCell) {
+                [self jsq_configureMessageCellLayoutAttributes:attributesItem];
+            }
+            else {
+                attributesItem.zIndex = -1;
+            }
+        }];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"JSQMessagesCollectionViewFlowLayout:: failed to layout elements in rect %@: %@",
+              NSStringFromCGRect(rect), exception.description);
+    }
     
     return attributesInRect;
 }

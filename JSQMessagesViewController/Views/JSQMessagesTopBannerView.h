@@ -3,7 +3,7 @@
 //  Dollarama
 //
 //  Created by 8707839 CANADA INC. on 2017-03-10.
-//  Copyright © 2017 binnj. All rights reserved.
+//  Copyright © 8707839 CANADA INC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

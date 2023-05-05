@@ -42,6 +42,7 @@
 #import "UIColor+JSQMessages.h"
 #import "UIDevice+JSQMessages.h"
 #import "NSBundle+JSQMessages.h"
+#include <math.h>
 
 
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
@@ -544,12 +545,18 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         if ([messageItem conformsToProtocol:@protocol(JSQMessageAttributedData)])
         {
             id <JSQMessageAttributedData> attributedMessageItem =  (id <JSQMessageAttributedData>) messageItem;
-            cell.textView.attributedText = [attributedMessageItem attributedText];
+            if (![self isPointNaN:cell.textView.layer.position])
+            {
+                cell.textView.attributedText = [attributedMessageItem attributedText];
+            }
         }
         else
         {
-            cell.textView.text = nil;
-            cell.textView.attributedText = [[NSAttributedString alloc] initWithString:([messageItem text] ?: @"") attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
+            if (![self isPointNaN:cell.textView.layer.position])
+            {
+                cell.textView.text = nil;
+                cell.textView.attributedText = [[NSAttributedString alloc] initWithString:([messageItem text] ?: @"") attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
+            }
         }
         NSParameterAssert(cell.textView.text != nil);
 
@@ -1163,6 +1170,11 @@ didLoadLabelTextChange:(NSString *)text {
                                                                       action:@selector(jsq_handleInteractivePopGestureRecognizer:)];
         self.currentInteractivePopGestureRecognizer = self.navigationController.interactivePopGestureRecognizer;
     }
+}
+
+-(BOOL)isPointNaN:(CGPoint)point
+{
+    return (isnan(point.x)) || (isnan(point.y));
 }
 
 @end

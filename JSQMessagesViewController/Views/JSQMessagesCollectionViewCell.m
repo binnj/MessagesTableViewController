@@ -223,7 +223,7 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
 
 //  FIXME: radar 18326340
 //         remove when fixed
-//         hack for Xcode6 / iOS 8 SDK rendering bug that occurs on iOS 7.x
+//         workaround for Xcode6 / iOS 8 SDK rendering bug that occurs on iOS 7.x
 //         see issue #484
 //         https://github.com/jessesquires/JSQMessagesViewController/issues/484
 //

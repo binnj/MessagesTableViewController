@@ -1,6 +1,6 @@
 //
 //  JSQMessagesTopBannerView.h
-//  Dollarama
+//  Mortgage
 //
 //  Created by 8707839 CANADA INC. on 2017-03-10.
 //  Copyright © 8707839 CANADA INC. All rights reserved.

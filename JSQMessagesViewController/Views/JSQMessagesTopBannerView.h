@@ -2,7 +2,7 @@
 //  JSQMessagesTopBannerView.h
 //  Dollarama
 //
-//  Created by besat@morgiij.com on 2017-03-10.
+//  Created by besat on 2017-03-10.
 //  Copyright © 2017 binnj. All rights reserved.
 //
 

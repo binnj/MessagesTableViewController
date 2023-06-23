@@ -2,7 +2,7 @@
 //  JSQMessagesTopBannerView.m
 //  Dollarama
 //
-//  Created by besat on 2017-03-10.
+//  Created by binnj, inc. on 2017-03-10.
 //  Copyright © 2017 binnj. All rights reserved.
 //
 

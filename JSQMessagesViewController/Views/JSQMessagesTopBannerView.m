@@ -3,7 +3,7 @@
 //  Dollarama
 //
 //  Created by binnj, inc. on 2017-03-10.
-//  Copyright © 2017 binnj. All rights reserved.
+//  Copyright © 2017 binnj, inc. All rights reserved.
 //
 
 #import "JSQMessagesTopBannerView.h"
